@@ -40,7 +40,10 @@ endif()
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(z_war src/main.cpp)
+add_executable(z_war src/main.cpp
+        src/game/core/Game.cpp
+        src/game/core/Game.h
+)
 
 target_link_libraries(${PROJECT_NAME} raylib)
 
