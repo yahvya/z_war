@@ -1,0 +1,57 @@
+fonctionnalités du jeux :
+
+- lancer une partie sur le réseau local en 1 contre 1
+    - lancer pour une personne en particulier
+    - lancer en aléatoire sur le réseau local
+
+- lancer une partie contre la machine
+    - choisir la difficulté
+    - mode aléatoire ou adversaire en particulier
+
+- dans une partie:
+
+    - une partie avec ou sans durée dans le temps
+    - choisir la durée de la partie manuellement parmis une liste de choix
+
+- scènes d'une partie
+    - on peut avoir des scènes sans élements
+    - scènes avec élements sur lesquels les joueurs peuvent prendre appuie
+    - scènes sans blocages sur les côtés par limitation du terrain ou avec
+    - on peut mélanger tous ces paramètres
+
+- son
+    - on peut avoir du son dans l'application et / ou dans la partie les deux ne sont pas liés
+    - on peut avoir la musique de partie
+    - on peut avoir le son des coups
+    - on peut activer ou désactiver ces différents types de son individuellement
+    - on peut régler l'intensité de ses différents types de son individuellement
+
+- personnages
+    - les personnages doivent être chargés à patir d'une source de données toujours au même format mais provenance pouvant changer (par défaut source dossier ressources)
+    - les personnages peuvent avoir différentes formes (par niveau d'évolution style ssj1 ssj2 ...)
+    - les évolutions ont chacune leur caratéristiques propres
+
+    - évolutions:
+        - pour faire une évolution il faut avoir charger son énergie jusqu'a un certains point
+        - on peut charger son énergie en enchainant l'adversaire de coup les coups cumulés en apportent (si on reçoit un coup ça diminue un peu et les coups cumulés repartent de 0
+        - plus les coups cumulés sont important plus l'energie monte vite
+        - l'évotion à une durée dans le temps en fonction du personnage (plus l'évolution peut être chargé vite moins elle durera longtemps vise versa)
+        - chaque coup à sa vitesse d'exécution propre à elle
+
+    - mouvement basique
+    - mouvement de simple double triple ... saut
+    - mouvement de saut dans une direction
+    - mouvement de téléportation sur une zone fixé d'avance (pouvant être le joueur avdersaire ou dans la scène)
+    - mouvement de lancer d'objet
+    - mouvement de blocage
+    - de chute dans diverse position
+    - mouvement de protection (puissance de bouclier pouvant varier)
+    - mouvement de coup de pied retourné
+    - mouvement de coup de pied sauté
+    - mouvement de coup de pied normal
+
+    - on a une découpe du corps en 3 parties (haut mileu bas) les dégats ont plus moins d'ampleur en fonction de la zone (90% de réussite tête 40% milieu 20% pied)
+    - les coups sur les pieds peuvent provoquer la chute (en fonction de la résistance de cette zone)
+    - résistance aux coups pouvant faire tomber associé aux zones (diminue dans le combat à base des dégats reçu)
+
+
