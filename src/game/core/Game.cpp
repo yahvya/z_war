@@ -3,20 +3,12 @@
 //
 
 #include "Game.h"
-#include "raylib.h"
 
-namespace Game {
-    namespace Core {
+namespace Game::Core {
         bool Game::launch() {
-            InitWindow(300,300,"test");
-            while(!WindowShouldClose() ){
-                BeginDrawing();
-                ClearBackground(WHITE);
-                EndDrawing();
-            }
-            CloseWindow();
+
 
             return true;
         }
     } // Game
-} // Core
+// Core

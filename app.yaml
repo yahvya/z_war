@@ -1,0 +1,10 @@
+app-name: Z-war
+resources-path: ./resources/
+version: 1
+-creators:
+    - fullname: Yahaya Bathily
+      github: https://github.com/yahvya/
+      role: Créateur et développeur du jeux
+    - fullname: Fawzi Ouaheb
+      github: https://github.com/fawziouaheb
+      role: Support design visuel
