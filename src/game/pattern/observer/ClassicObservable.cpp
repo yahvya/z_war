@@ -4,7 +4,7 @@
 
 #include "ClassicObservable.hpp"
 
-namespace Game::Utils::Pattern::Observer {
+namespace Game::Pattern::Observer {
     ClassicObservable* ClassicObservable::registerObserver(
         int methodId,
         ObserverDatasContainer* observerDatas

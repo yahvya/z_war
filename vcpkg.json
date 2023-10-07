@@ -1,0 +1,13 @@
+{
+  "name" : "z-war",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "db0473513e5dc73ec6b6f431ff05d2f398eea042",
+  "dependencies" : [ {
+    "name" : "raylib",
+    "version>=" : "4.5.0#2",
+    "$comment" : "  # this is heuristically generated, and may not be correct\n\n  find_package(raylib CONFIG REQUIRED)\n\n  target_link_libraries(main PRIVATE raylib)\n"
+  }, {
+    "name" : "ryml",
+    "version>=" : "0.5.0"
+  } ]
+}

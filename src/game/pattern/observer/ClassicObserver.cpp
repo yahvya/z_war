@@ -4,6 +4,6 @@
 
 #include "ClassicObserver.hpp"
 
-namespace Game::Utils::Pattern::Observer {
+namespace Game::Pattern::Observer {
 
 }

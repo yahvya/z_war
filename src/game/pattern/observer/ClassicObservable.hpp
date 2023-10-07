@@ -8,9 +8,10 @@
 #include <map>
 #include <list>
 #include <functional>
+#include <any>
 #include "ClassicObserver.hpp"
 
-namespace Game::Utils::Pattern::Observer {
+namespace Game::Pattern::Observer {
     /**
      * class de marquage d'un élement pouvant être observé
      */
