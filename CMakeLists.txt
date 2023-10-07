@@ -41,8 +41,12 @@ endif()
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(z_war src/main.cpp
-        src/game/core/Game.cpp
-        src/game/core/Game.h
+    src/game/core/Game.cpp
+        src/game/core/Game.hpp
+        src/game/utils/pattern/observer/ClassicObservable.cpp
+        src/game/utils/pattern/observer/ClassicObservable.hpp
+        src/game/utils/pattern/observer/ClassicObserver.cpp
+        src/game/utils/pattern/observer/ClassicObserver.hpp
 )
 
 target_link_libraries(${PROJECT_NAME} raylib)

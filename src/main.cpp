@@ -1,14 +1,23 @@
 #include <iostream>
-#include "game/core/Game.h"
+#include "game/core/Game.hpp"
 
 int main() {
-    auto game = new Game::Core::Game();
+    try {
+        // lancement du jeux
+        auto game = new Game::Core::Game();
 
-    if(!game->launch() ){
-        std::cerr << "Echec de lancement de la partie" << std::endl;
+        if (!game->launch() ) {
+            std::cerr << "Echec de lancement de la partie" << std::endl;
+
+            return EXIT_FAILURE;
+        }
+    }
+    catch (std::exception&){
+        std::cerr << "Une erreur interne s'est produite !" << std::endl;
 
         return EXIT_FAILURE;
     }
 
     return EXIT_SUCCESS;
 }
+

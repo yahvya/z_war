@@ -2,13 +2,11 @@
 // Created by devel on 03/10/2023.
 //
 
-#include "Game.h"
+#include "Game.hpp"
 
 namespace Game::Core {
-        bool Game::launch() {
+    bool Game::launch() noexcept{
 
-
-            return true;
-        }
-    } // Game
-// Core
+        return true;
+    }
+}
