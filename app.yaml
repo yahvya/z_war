@@ -1,10 +1,21 @@
-app-name: Z-war
-resources-path: ./resources/
+# fichier de configuration du jeux , changez ce fichier pour configurer l'apparence de votre jeux
+
+# informations globales jeux / créateurs / version
 version: 1
+appname: Z-war
 -creators:
-    - fullname: Yahaya Bathily
-      github: https://github.com/yahvya/
-      role: Créateur et développeur du jeux
-    - fullname: Fawzi Ouaheb
-      github: https://github.com/fawziouaheb
-      role: Support design visuel
+  - fullname: Yahaya Bathily
+    github: https://github.com/yahvya/
+    role: Créateur et développeur du jeux
+  - fullname: Fawzi Ouaheb
+    github: https://github.com/fawziouaheb
+    role: Support design visuel
+
+# chemin du jeux
+resources-path: ./resources/
+
+# gestion des polices
+basic-font-size: 13
+basic-font-larger-size: 15
+special-font-size: 13
+special-font-larger-size: 15

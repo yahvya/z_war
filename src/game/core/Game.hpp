@@ -5,12 +5,14 @@
 #ifndef Z_WAR_GAME_HPP
 #define Z_WAR_GAME_HPP
 
-#include "../resources/ResourcesLoader.hpp"
+#include "../resources/ResourcesManager.hpp"
+#include "../pattern/observer/ClassicObserver.hpp"
 
 using namespace Game::Resource;
+using namespace Game::Pattern::Observer;
 
 namespace Game::Core {
-    class Game {
+    class Game : public ClassicObserver{
         public:
             /**
              * lance le jeux
@@ -18,11 +20,22 @@ namespace Game::Core {
              */
             bool launch() noexcept;
 
+            /**
+             *
+             * @return le gestionnaire de ressources
+             */
+            ResourcesManager* getResourcesManager() noexcept;
+
         private:
             /**
-             * ressources globales de l'application
+             * gestionnaire de ressources
              */
-            GameGlobalResource* appGlobalRessources;
+             ResourcesManager* resourcesManager;
+
+            /**
+             * nombre de tentatives à refaire (global dans le programme) dessin
+             */
+            static const int GLOBAL_COUNT_OF_RETRY_FOR_DRAW;
     };
 }
 
