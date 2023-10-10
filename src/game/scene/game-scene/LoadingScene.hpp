@@ -25,6 +25,8 @@ namespace Game::Scene::GameScene {
              * @return si le dessin à réussi
              */
             bool draw(int countOfRetry) noexcept override;
+
+            bool configWindow() noexcept override;
     };
 
 }

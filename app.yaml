@@ -13,9 +13,13 @@ appname: Z-war
 
 # chemin du jeux
 resources-path: ./resources/
+iconPath: ./resources/icons/favicon.png
 
 # gestion des polices
 basic-font-size: 13
 basic-font-larger-size: 15
 special-font-size: 13
 special-font-larger-size: 15
+
+# fps du jeux
+fps: 60

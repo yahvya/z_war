@@ -1,0 +1,26 @@
+is-configured: false
+
+# données du joueur
+
+# données globales identité du joueur
+name:
+fname:
+birth:
+
+# données globale de l'application sur le joueur
+join-date:
+
+# données son du joueur
+
+# son général du jeux
+game-general-song-percent: 50
+# son dans une partie
+game-game-song-percent: 50
+
+# son des coups dans une partie
+game-hit-song-percent: 50
+
+# son des actions sur le jeux (click souris hover ...)
+game-general-action-song-percent: 50
+
+# configuration potentielle de manettes

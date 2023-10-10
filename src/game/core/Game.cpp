@@ -38,7 +38,7 @@ namespace Game::Core {
             ResourcesManager::ResourcesManagerObservableEvents::END_OF_LOADING_APP_RESSOURCES,
             new ClassicObservable::ObserverDatasContainer(
                 this,
-                [this,&loadingScene](ClassicObservable* resourceManager,std::any eventData){ loadingScene->stopDrawing(); }
+                [this,&loadingScene](ClassicObservable* resourceManager,std::any eventData){ /*loadingScene->stopDrawing();*/ }
             )
         );
 
@@ -50,7 +50,6 @@ namespace Game::Core {
         loadingScene->draw(Game::GLOBAL_COUNT_OF_RETRY_FOR_DRAW);
 
         // vérification de la réussite du chargement des ressources
-        std::cout << "deblocage du dessin" << std::endl;
 
         // lancement du jeux
 

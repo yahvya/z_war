@@ -55,14 +55,24 @@ namespace Game::Resource {
         int currentVersion;
 
         /**
+         * fps du jeux
+         */
+        int fps;
+
+        /**
          * chemin du dossier contenant les ressources
          */
         std::string resourcesDirPath;
 
         /**
+         * chemin de l'icone de l'application
+         */
+        std::string appIconPath;
+
+        /**
          * nom de l'application
          */
-        const char* appName;
+        std::string appName;
 
         /**
          * liste des créateurs
@@ -73,6 +83,71 @@ namespace Game::Resource {
 
         GameGlobalResource() : isLoaded{false} {}
     }GameGlobalResource;
+
+    /**
+     * données du joueur
+     */
+    typedef struct{
+        /*
+         * nom du joueur
+         */
+        std::string name;
+
+        /**
+         * prénom du joueur
+         */
+        std::string fname;
+
+        /**
+         * date de naissance du joueur
+         */
+        std::string birth;
+
+        /**
+         * date du premier lancement du jeux par le joueur
+         */
+        std::string joinDate;
+
+        /**
+         * si c'est le premier lancement du jeux (données joueur non configurés)
+         */
+        bool isConfigured;
+    }PlayerConfigDatas;
+
+    typedef struct{
+        /**
+         * son général du jeux
+         */
+        float generalSongPercent;
+
+        /*
+         *  son dans une partie
+         */
+        float gameSongPercent;
+
+        /**
+         * son des coups dans une partie
+         */
+        float hitSongPercent;
+
+        /**
+         * son des actions sur le jeux (click souris hover ...)
+         */
+        float generalActionSongPercent;
+    }SongConfigDatas;
+
+    /**
+     * ressources requises du jeux
+     */
+    typedef struct GameRequiredResource{
+        /**
+         * configuration du joueur
+         */
+        PlayerConfigDatas* playerConfig;
+        SongConfigDatas* songConfig;
+
+        explicit GameRequiredResource(PlayerConfigDatas* playerConfig,SongConfigDatas* songConfig) : playerConfig{playerConfig},songConfig{songConfig} {}
+    }GameRequiredResource;
 
     /**
      * gestionnaire de ressources, passerelle avec les librairies utilisés
@@ -110,6 +185,18 @@ namespace Game::Resource {
              */
             bool getSuccessfullyLoadRequiredResources() noexcept;
 
+            /**
+             * @attention à la modification des données
+             * @return les données requises du jeux
+             */
+            GameRequiredResource* getGameRequiredResources() noexcept;
+
+            /**
+             * @attention à la modification des données
+             * @return les données préliminaires du jeux
+             */
+            GameGlobalResource* getGameGlobalResources() noexcept;
+
         private:
             /**
              * charge les données requises pour l'application
@@ -129,13 +216,26 @@ namespace Game::Resource {
              */
             static const char* FONTS_DIR_PATH;
 
+            /**
+             * chemin du dossier des configurations à partir du dossier des ressources
+             */
+            static const char* CONFIG_DIR_PATH;
+
         private:
             /**
              * ressources globales et préliminaires du jeux
              */
             GameGlobalResource* gameGlobalResources;
 
+            /**
+             * thread de chargement des ressources requises du jeux
+             */
             std::thread* requiredResourcesLoadingThread;
+
+            /**
+             * ressources requises du jeux
+             */
+            GameRequiredResource* gameRequiredResources;
     };
 
 }

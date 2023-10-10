@@ -3,6 +3,7 @@
 //
 
 #include "ClassicObservable.hpp"
+#include <iostream>
 
 namespace Game::Pattern::Observer {
     ClassicObservable* ClassicObservable::registerObserver(
@@ -19,7 +20,10 @@ namespace Game::Pattern::Observer {
                   });
             } else this->observersMap.find(methodId)->second.push_front(observerDatas); // ajout dans la liste existante
         }
-        catch(std::exception&){}
+        catch(std::exception& e){
+            std::wcerr << "(Echec d'enregistrement d'observable)" << std::endl;
+            std::wcerr << "(Erreur : " << e.what() << ")"  << std::endl;
+        }
 
         return this;
     }
@@ -32,7 +36,10 @@ namespace Game::Pattern::Observer {
 
             for(auto observerData : observerDatasList) observerData->notificationExecutor(this,datas);
         }
-        catch(std::exception&){}
+        catch(std::exception& e){
+            std::wcerr << "(Echec de notification des observers)" << std::endl;
+            std::wcerr << "(Erreur : " << e.what() << ")"  << std::endl;
+        }
 
         return this;
     }
@@ -60,7 +67,10 @@ namespace Game::Pattern::Observer {
             // mise à jour de la liste
             this->observersMap.at(methodId) = observersList;
         }
-        catch(std::exception&){}
+        catch(std::exception& e){
+            std::wcerr << "(Echec de suppression d'observable)" << std::endl;
+            std::wcerr << "(Erreur : " << e.what() << ")"  << std::endl;
+        }
 
         return this;
     }
