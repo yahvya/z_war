@@ -31,7 +31,7 @@ namespace Game::Scene::Scene{
             virtual bool draw(int countOfRetry) noexcept = 0;
 
             /**
-             * configure la fenêtre pour la scène
+             * configure la fenêtre pour la scène (taille,titre,fps)
              * @return si la configuration réussie
              */
             virtual bool configWindow() noexcept;

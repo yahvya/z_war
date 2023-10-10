@@ -4,6 +4,9 @@
 
 #include "LoadingScene.hpp"
 #include <iostream>
+#include "../background/game-background/GridBackground.hpp"
+
+using namespace Game::Scene::Background::GameBackground;
 
 namespace Game::Scene::GameScene {
     LoadingScene::LoadingScene(Core::Game *linkedGame) :  BaseScene(linkedGame) {}
@@ -14,19 +17,29 @@ namespace Game::Scene::GameScene {
 
             if(!this->configWindow() ) throw std::runtime_error("Echec de configuration de la fenêtre de chargement");
 
-            while (this->isDrawing && !WindowShouldClose() ) {
-                BeginDrawing();
+            // création du fond de la page
+            auto background = new GridBackground();
+            auto backgroundDrawingZone = Rectangle(0,0,this->width,this->height);
 
-                DrawFPS(10,10);
+            // dessin de la page
+            while (this->isDrawing && !WindowShouldClose() ) {
+                auto mousePos = GetMousePosition();
+
+                BeginDrawing();
+                    ClearBackground(BLANK);
+
+                    // dessin du fond
+                    background->drawIn(backgroundDrawingZone);
 
                 EndDrawing();
-
-                ClearBackground(BLANK);
             }
         }
         catch(std::exception& e){
-            std::wcerr << "(Echec de dessin de la page de chargement)" << std::endl;
-            std::wcerr << "(Erreur : )" << e.what() << std::endl;
+            if(countOfRetry == 0) {
+                std::wcerr << "(Echec de dessin de la page de chargement)" << std::endl;
+                std::wcerr << "(Erreur : )" << e.what() << std::endl;
+            }
+            else this->draw(countOfRetry - 1);
         }
 
         return true;
@@ -54,9 +67,12 @@ namespace Game::Scene::GameScene {
             SetWindowIcon(appIcon);
             ClearWindowState(FLAG_WINDOW_HIDDEN);
             SetWindowState(FLAG_VSYNC_HINT | FLAG_WINDOW_UNDECORATED);
-            this->centerWindow();
 
-            return BaseScene::configWindow();
+            auto success = BaseScene::configWindow();
+
+            if(success) this->centerWindow();
+
+            return success;
         }
         catch(std::exception& e){
             std::wcerr << "(Echec de configuration de la page de chargement)" << std::endl;

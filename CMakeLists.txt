@@ -23,6 +23,10 @@ add_executable(z_war src/main.cpp
         src/game/scene/game-scene/LoadingScene.hpp
         src/game/resources/ResourcesManager.cpp
         src/game/resources/ResourcesManager.hpp
+        src/game/scene/background/background/SceneBackground.cpp
+        src/game/scene/background/background/SceneBackground.hpp
+        src/game/scene/background/game-background/GridBackground.cpp
+        src/game/scene/background/game-background/GridBackground.hpp
 )
 
 # ajout de yaml-cpp

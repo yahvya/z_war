@@ -6,7 +6,7 @@
 #include "raylib.h"
 
 namespace Game::Scene::Scene {
-    // intiation constantes
+    // initiation constantes
     const int BaseScene::MIN_FPS = 25;
     const int BaseScene::MAX_FPS = 100;
     const int BaseScene::DEFAULT_FPS = 60;
@@ -41,8 +41,8 @@ namespace Game::Scene::Scene {
         auto monitor = GetCurrentMonitor();
 
         SetWindowPosition(
-            (GetMonitorWidth(monitor) - this->width) / 2,
-            (GetMonitorHeight(monitor) - this->width) / 2
+            (GetMonitorWidth(monitor) - GetScreenWidth() ) / 2,
+            (GetMonitorHeight(monitor) - GetScreenHeight() ) / 2
         );
 
         return this;
