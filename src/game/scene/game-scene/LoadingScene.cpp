@@ -4,8 +4,10 @@
 
 #include "LoadingScene.hpp"
 #include "../background/game-background/GridBackground.hpp"
+#include "../components/animation/CharacterSwitcherAnimation.hpp"
 
 using namespace Game::Scene::Background::GameBackground;
+using namespace Game::Scene::Components::Animation;
 
 namespace Game::Scene::GameScene {
     LoadingScene::LoadingScene(Core::Game *linkedGame) :  BaseScene(linkedGame) {}
@@ -22,6 +24,20 @@ namespace Game::Scene::GameScene {
 
                 background->setSquareSize(55);
 
+            // création et configuration de l'animation de joueur
+                auto charactersAnimation = new CharacterSwitcherAnimation(300);
+
+            // configuration du dessin de titre
+                auto globalRessource = this->linkedGame->getResourcesManager()->getGameGlobalResources();
+                auto appName = globalRessource->appName.c_str();
+                auto textColor = background->getColorFromConfig("special-on-bg");
+                auto fontSize = 100.f;
+                auto textPos = Vector2(
+                    (this->width - static_cast<float>(MeasureText(appName,static_cast<int>(fontSize) ) ) ) / 2,
+                    this->height * 0.25f
+                );
+
+
             // dessin de la page
                 while (this->isDrawing && !WindowShouldClose() ) {
                     BeginDrawing();
@@ -30,6 +46,10 @@ namespace Game::Scene::GameScene {
 
                         // dessin du fond
                         background->drawIn(backgroundDrawingZone);
+
+                        // affichage du titre du jeux
+
+                        DrawTextEx(globalRessource->specialTextFont,appName,textPos,fontSize,0,textColor);
 
                     EndDrawing();
                 }
@@ -60,7 +80,7 @@ namespace Game::Scene::GameScene {
 
             // configuration interne de la fenêtre
                 this->width = 800;
-                this->height = 380;
+                this->height = 480;
                 this->windowName = "";
 
             // configuration manuelle

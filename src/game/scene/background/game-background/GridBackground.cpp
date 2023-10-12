@@ -34,15 +34,11 @@ namespace Game::Scene::Background::GameBackground{
                 container.height *= perspectivePercent;
 
             // récupération des couleurs de dessin
-                auto backgroundColorDatas = this->colorConfig["background-color"].as<std::array<int,4> >();
-                auto primaryLineColorDatas = this->colorConfig["primary-line-color"].as<std::array<int,4> >();
-                auto secondaryLineColorDatas = this->colorConfig["secondary-line-color"].as<std::array<int,4> >();
-
-                auto primaryLineColor = Color(primaryLineColorDatas[0],primaryLineColorDatas[1],primaryLineColorDatas[2],primaryLineColorDatas[3]);
-                auto secondaryLineColor = Color(secondaryLineColorDatas[0],secondaryLineColorDatas[1],secondaryLineColorDatas[2],secondaryLineColorDatas[3]);
+                auto primaryLineColor = this->getColorFromConfig("primary-line-color");
+                auto secondaryLineColor = this->getColorFromConfig("secondary-line-color");
 
             // ajout de la couleur de fond
-                ClearBackground(Color(backgroundColorDatas[0],backgroundColorDatas[1],backgroundColorDatas[2],backgroundColorDatas[3]) );
+                ClearBackground(this->getColorFromConfig("background-color") );
 
             // calcul du nombre de ligne nécessaires pour les petits carré
                 // remplissage décalé de la page sur la largeur
@@ -82,7 +78,13 @@ namespace Game::Scene::Background::GameBackground{
 
                 // dessin des lignes de perspectives
 
-                DrawLine(container.x,startY,container.x + container.width,startY,primaryLineColor);
+                DrawLine(
+                        static_cast<int>(container.x),
+                        static_cast<int>(startY)
+                        ,static_cast<int>(container.x + container.width),
+                        static_cast<int>(startY),
+                        primaryLineColor
+                );
 
                 for(int i = 0; i < countOfWidthLinesHalf; i++){
                     auto baseX =  tmpX + (i * this->squareSize);
@@ -114,7 +116,7 @@ namespace Game::Scene::Background::GameBackground{
         return this;
     }
 
-    GridBackground* GridBackground::drawSquareIn(Rectangle container,Color color,int drawSquareSize){
+    GridBackground* GridBackground::drawSquareIn(Rectangle container,Color color,float drawSquareSize){
         // on réduit un peu la dimension pour l'affichage des lignes
             auto tmpX = container.x + (drawSquareSize / 2);
             auto tmpWidth = container.width - drawSquareSize;
@@ -128,14 +130,26 @@ namespace Game::Scene::Background::GameBackground{
             for(int i = 0; i < countOfWidthLines;i++){
                 auto x  = tmpX + (i * drawSquareSize);
 
-                DrawLine(x,container.y,x,endY,color);
+                DrawLine(
+                    static_cast<int>(x),
+                    static_cast<int>(container.y)
+                    ,static_cast<int>(x),
+                    static_cast<int>(endY),
+                    color
+                );
             }
 
         // dessin des lignes horizontales
             for(int i = 0; i< countOfHeightLines; i++){
                 auto yPos = container.y + (i * drawSquareSize);
 
-                DrawLine(container.x,yPos,container.x + container.width,yPos,color);
+                DrawLine(
+                        static_cast<int>(container.x),
+                        static_cast<int>(yPos)
+                        ,static_cast<int>(container.x + container.width),
+                        static_cast<int>(yPos),
+                        color
+                );
             }
 
         return this;

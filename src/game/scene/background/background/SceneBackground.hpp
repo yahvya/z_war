@@ -36,6 +36,13 @@ namespace Game::Scene::Background::Background{
              */
             virtual YAML::Node getColorConfig() noexcept;
 
+            /**
+             * crée une couleur à partir de la configuration
+             * @param colorKey la clé de la couleur dans le fichier de configuration ou couleur noire par défaut
+             * @return la couleur
+             */
+            virtual Color getColorFromConfig(const char* colorKey) noexcept;
+
         protected:
             /**
              * charge les couleurs du fond ou défini celle par défaut

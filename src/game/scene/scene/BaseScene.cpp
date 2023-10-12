@@ -26,9 +26,11 @@ namespace Game::Scene::Scene {
 
     bool BaseScene::configWindow() noexcept{
         try {
-            SetWindowSize(this->width, this->height);
-            SetWindowTitle((std::string(this->windowName) + this->linkedGame->getResourcesManager()->getGameGlobalResources()->appName).c_str() );
-            this->setFps();
+            // configuration de la fenêtre
+                SetWindowSize(this->width, this->height);
+                SetWindowTitle((std::string(this->windowName) + this->linkedGame->getResourcesManager()->getGameGlobalResources()->appName).c_str() );
+            // récupération et mise à jour des fps
+                this->setFps();
 
             return true;
         }

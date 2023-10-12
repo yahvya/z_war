@@ -29,6 +29,14 @@ add_executable(z_war src/main.cpp
         src/game/scene/background/game-background/GridBackground.hpp
         src/game/player/player/Player.cpp
         src/game/player/player/Player.hpp
+        src/game/scene/components/animation/CharacterSwitcherAnimation.cpp
+        src/game/scene/components/animation/CharacterSwitcherAnimation.hpp
+        src/game/scene/components/animation/CharacterSwitcherAnimation.hpp
+        src/game/scene/components/animation/Animation.cpp
+        src/game/scene/components/animation/Animation.hpp
+        src/game/player/character/Character.cpp
+        src/game/player/character/Character.hpp
+        src/game/player/character/Character.hpp
 )
 
 # ajout de yaml-cpp
