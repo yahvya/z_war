@@ -24,7 +24,7 @@ namespace Game::Core {
         // chargement des ressources préliminaires
 
         if(!this->resourcesManager->loadGlobalResources() ){
-            std::wcerr << "(Echec de chargement du fichier des ressources de l'application)" << std::endl;
+            TraceLog(LOG_ERROR,"Echec de chargement du fichier des ressources de l'application");
 
             CloseWindow();
 
@@ -52,6 +52,8 @@ namespace Game::Core {
         // vérification de la réussite du chargement des ressources
 
         // lancement du jeux
+
+        CloseWindow();
 
         return true;
     }

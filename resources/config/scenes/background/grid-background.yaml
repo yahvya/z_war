@@ -1,0 +1,5 @@
+# configuration de la scène grille (couleurs rgba)
+
+background-color: [36,36,36,255]
+primary-line-color: [125,124,127,255]
+secondary-line-color: [24,24,24,255]

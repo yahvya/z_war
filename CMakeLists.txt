@@ -27,6 +27,8 @@ add_executable(z_war src/main.cpp
         src/game/scene/background/background/SceneBackground.hpp
         src/game/scene/background/game-background/GridBackground.cpp
         src/game/scene/background/game-background/GridBackground.hpp
+        src/game/player/player/Player.cpp
+        src/game/player/player/Player.hpp
 )
 
 # ajout de yaml-cpp

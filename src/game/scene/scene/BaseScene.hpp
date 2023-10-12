@@ -101,12 +101,12 @@ namespace Game::Scene::Scene{
             /**
              * largeur de la fenêtre
              */
-            int width;
+            float width;
 
             /**
              * hauteur de la fenêtre
              */
-            int height;
+            float height;
 
             /**
              * nom de la fenêtre
