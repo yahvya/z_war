@@ -5,9 +5,13 @@
 #include "LoadingScene.hpp"
 #include "../background/game-background/GridBackground.hpp"
 #include "../components/animation/CharacterSwitcherAnimation.hpp"
+#include "../../player/character/game-characters/FileCharacter.hpp"
+#include "../../utils/FileUtils.hpp"
 
+using namespace Game::Utils;
 using namespace Game::Scene::Background::GameBackground;
 using namespace Game::Scene::Components::Animation;
+using namespace Game::Player::Character::GameCharacters;
 
 namespace Game::Scene::GameScene {
     LoadingScene::LoadingScene(Core::Game *linkedGame) :  BaseScene(linkedGame) {}
@@ -18,25 +22,54 @@ namespace Game::Scene::GameScene {
 
             if(!this->configWindow() ) throw std::runtime_error("Echec de configuration de la fenêtre de chargement");
 
-            // création et coonfiguration du fond de la page
+            auto globalRessource = this->linkedGame->getResourcesManager()->getGameGlobalResources();
+
+            // création et configuration du fond de la page
                 auto background = new GridBackground(this->linkedGame);
                 auto backgroundDrawingZone = Rectangle(0,0,this->width,this->height);
 
                 background->setSquareSize(55);
 
             // création et configuration de l'animation de joueur
-                auto charactersAnimation = new CharacterSwitcherAnimation(300);
+                CharacterSwitcherAnimation* charactersAnimation = nullptr;
+
+                const auto animationSpeed = 10;
+
+                // récupération des dossiers aléatoires
+                    try{
+                        auto dirPath = (std::string(globalRessource->resourcesDirPath) + ResourcesManager::CHARACTERS_DIR_PATH).c_str();
+
+                        auto countOfFiles = FileUtils::countOfFileInDir(dirPath);
+
+                        if(countOfFiles <= 0) throw std::runtime_error("Pas de personnage d'animation trouvé");
+
+                        // récupération de la liste des dossiers de personnage et création de l'animation
+                            const unsigned int maxCharacters = 3;
+
+                            auto charactersDirList = FileUtils::getRandomElementsInDir(dirPath,GetRandomValue(1,static_cast<int>(countOfFiles > maxCharacters ? maxCharacters : countOfFiles) ) );
+
+                            std::vector<Character*> charactersList{};
+
+                            // chargement des personnages et création de l'animation
+                                std::for_each(charactersDirList.begin(), charactersDirList.end(), [this,&charactersList](const auto &dirPath){
+                                    charactersList.push_back(new FileCharacter(this->linkedGame,dirPath) );
+                                });
+
+                                charactersAnimation = new CharacterSwitcherAnimation(charactersList);
+                    }
+                    catch(std::exception& e){
+                        TraceLog(LOG_ERROR,"Echec de listage du dossier des personnages");
+                        TraceLog(LOG_ERROR,e.what() );
+                    }
 
             // configuration du dessin de titre
-                auto globalRessource = this->linkedGame->getResourcesManager()->getGameGlobalResources();
                 auto appName = globalRessource->appName.c_str();
                 auto textColor = background->getColorFromConfig("special-on-bg");
-                auto fontSize = 100.f;
+                auto fontSize = 90.f;
                 auto textPos = Vector2(
                     (this->width - static_cast<float>(MeasureText(appName,static_cast<int>(fontSize) ) ) ) / 2,
-                    this->height * 0.25f
+                    this->height * 0.10f
                 );
-
 
             // dessin de la page
                 while (this->isDrawing && !WindowShouldClose() ) {
@@ -47,9 +80,11 @@ namespace Game::Scene::GameScene {
                         // dessin du fond
                         background->drawIn(backgroundDrawingZone);
 
-                        // affichage du titre du jeux
-
+                        // affichage du nom du jeux
                         DrawTextEx(globalRessource->specialTextFont,appName,textPos,fontSize,0,textColor);
+
+                        // animation d'apparition
+                        if(charactersAnimation != nullptr) charactersAnimation->animate(animationSpeed);
 
                     EndDrawing();
                 }

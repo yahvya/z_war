@@ -221,6 +221,11 @@ namespace Game::Resource {
              */
             static const char* CONFIG_DIR_PATH;
 
+            /**
+             * chemin du dossier des personnages
+             */
+            static const char* CHARACTERS_DIR_PATH;
+
         private:
             /**
              * ressources globales et préliminaires du jeux

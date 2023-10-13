@@ -34,9 +34,15 @@ add_executable(z_war src/main.cpp
         src/game/scene/components/animation/CharacterSwitcherAnimation.hpp
         src/game/scene/components/animation/Animation.cpp
         src/game/scene/components/animation/Animation.hpp
-        src/game/player/character/Character.cpp
-        src/game/player/character/Character.hpp
-        src/game/player/character/Character.hpp
+        src/game/player/character/character/Character.cpp
+        src/game/player/character/character/Character.hpp
+        src/game/player/character/character/Character.hpp
+        src/game/utils/TextUtils.cpp
+        src/game/utils/TextUtils.hpp
+        src/game/player/character/game-characters/FileCharacter.cpp
+        src/game/player/character/game-characters/FileCharacter.hpp
+        src/game/utils/FileUtils.cpp
+        src/game/utils/FileUtils.hpp
 )
 
 # ajout de yaml-cpp

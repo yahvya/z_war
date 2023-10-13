@@ -21,14 +21,14 @@ namespace Game::Scene::Background::GameBackground{
 
             // constantes des gestions de la perspective
                 // hauteur réservé à la partie haute de la fenêtre
-                const float perspectivePercent = 0.73;
+                const float perspectivePercent = 0.75;
                 // valeur de décalage de ligne après chaque passage
                 const int reductFactor = 43;
                 // distance entre chaque point (complémentaire à reductFactor)
                 auto dist = this->squareSize * 5;
 
                 // y bas de la page
-                const int persectiveHeightEnd = containerCopy.y + containerCopy.height;
+                const auto persectiveHeightEnd = containerCopy.y + containerCopy.height;
 
             // changement de la hauteur du conteneur pour dessiner sur la partie haute
                 container.height *= perspectivePercent;
@@ -110,7 +110,7 @@ namespace Game::Scene::Background::GameBackground{
         return this;
     }
 
-    GridBackground* GridBackground::setSquareSize(int newSquareSize){
+    GridBackground* GridBackground::setSquareSize(float newSquareSize){
         this->squareSize = newSquareSize;
 
         return this;

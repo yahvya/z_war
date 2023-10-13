@@ -12,6 +12,7 @@ namespace Game::Resource {
     const char* ResourcesManager::APP_CONFIG_FILE_PATH = "./app.yaml";
     const char* ResourcesManager::FONTS_DIR_PATH = "fonts/";
     const char* ResourcesManager::CONFIG_DIR_PATH = "config/";
+    const char* ResourcesManager::CHARACTERS_DIR_PATH = "characters/";
 
     ResourcesManager::ResourcesManager() : gameGlobalResources{new GameGlobalResource()},gameRequiredResources{nullptr} {}
 

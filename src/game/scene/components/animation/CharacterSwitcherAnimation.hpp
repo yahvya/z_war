@@ -6,10 +6,9 @@
 #define Z_WAR_CHARACTERSWITCHERANIMATION_HPP
 
 #include "Animation.hpp"
-#include "../../../player/character/Character.hpp"
-#include <array>
+#include "../../../player/character/character/Character.hpp"
 
-using namespace Game::Player::Character;
+using namespace Game::Player::Character::Character;
 
 namespace Game::Scene::Components::Animation{
     /**
@@ -17,22 +16,21 @@ namespace Game::Scene::Components::Animation{
      */
     class CharacterSwitcherAnimation : public Animation::Animation{
         public:
-            /**
-             *
-             * @param switchTime temps d'animation entre chaque passage
-             */
-            CharacterSwitcherAnimation(int switchTime);
+            CharacterSwitcherAnimation(std::vector<Character *> characters) noexcept;
 
-            Animation* animate() noexcept override;
+            /**
+             * remplace les personnages affichés
+             * @param newCharacters liste des personnages de l'animation
+             * @return self
+             */
+            CharacterSwitcherAnimation* setCharacters(std::vector<Character*> newCharacters) noexcept;
+
+            Animation* animate(int speed) noexcept override;
         private:
             /**
-             * liste des personnages à afficher à la suite
+             * liste des personnages
              */
-
-            /**
-             * temps d'animation entre chaque
-             */
-            int switchTime;
+            std::vector<Character*> characters;
     };
 }
 

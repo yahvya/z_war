@@ -13,9 +13,18 @@ namespace Game::Scene::Components::Animation{
         public:
             /**
              * joue l'animation
+             * à override si animation classique
              * @return self
              */
-            virtual Animation* animate() noexcept = 0;
+            virtual Animation* animate() noexcept;
+
+            /**
+             * joue l'animation
+             * à override si animation avec vitesse
+             * @param speed vitesse de l'animation
+             * @return self
+             */
+            virtual Animation* animate(int speed) noexcept;
     };
 }
 

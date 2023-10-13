@@ -32,7 +32,7 @@ namespace Game::Scene::Background::GameBackground{
              * @param newSquareSize taille des carrés
              * @return self
              */
-            GridBackground* setSquareSize(int newSquareSize);
+            GridBackground* setSquareSize(float newSquareSize);
 
             SceneBackground* drawIn(Rectangle container) noexcept override;
 
@@ -46,7 +46,7 @@ namespace Game::Scene::Background::GameBackground{
              * @param drawSquareSize taille du carré
              * @return self
              */
-            GridBackground* drawSquareIn(Rectangle container,Color color,int drawSquareSize);
+            GridBackground* drawSquareIn(Rectangle container,Color color,float drawSquareSize);
 
         private:
             /**
@@ -57,7 +57,7 @@ namespace Game::Scene::Background::GameBackground{
             /**
              * taille des carrées de la grille
              */
-            int squareSize;
+            float squareSize;
     };
 }
 
