@@ -5,12 +5,10 @@
 #include "CharacterSwitcherAnimation.hpp"
 
 namespace Game::Scene::Components::Animation{
-    CharacterSwitcherAnimation::CharacterSwitcherAnimation(std::vector<Character*> characters) noexcept : characters(characters) {
-        
-    }
+    CharacterSwitcherAnimation::CharacterSwitcherAnimation(std::vector<Character*> characters) noexcept : characters(characters) {}
 
     Animation* CharacterSwitcherAnimation::animate(int speed) noexcept{
-
+        
 
         return this;
     }

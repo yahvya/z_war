@@ -8,6 +8,6 @@ namespace Game::Player::Character::GameCharacters {
     FileCharacter::FileCharacter(Core::Game *linkedGame,const char* characterDirname) : Character::Character(linkedGame),characterDirname(characterDirname) {}
 
     bool FileCharacter::loadCharacterDatas() noexcept{
-        return this->loadFromFile(this->characterDirname);
+        return this->loadFromFile((std::string(this->characterDirname) + "/config.yaml").c_str() );
     }
 }

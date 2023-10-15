@@ -6,6 +6,7 @@
 #define Z_WAR_FILEUTILS_HPP
 
 #include <vector>
+#include <string>
 
 namespace Game::Utils {
 
@@ -28,7 +29,7 @@ namespace Game::Utils {
              * @param countOfElements nombre d'élements à récupérer
              * @return la liste des élements récupérés
              */
-            static std::vector<const char*> getRandomElementsInDir(const char* dirPath,unsigned int countOfElements) noexcept;
+            static std::vector<std::string> getRandomElementsInDir(const char* dirPath,unsigned int countOfElements) noexcept;
     };
 
 }

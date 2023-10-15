@@ -42,7 +42,7 @@ namespace Game::Core {
             )
         );
 
-        std::wcout << "(Lancement du chargement de ressource)" << std::endl;
+        TraceLog(LOG_INFO,"Lancement du chargement de ressource");
 
         this->resourcesManager->loadRequiredResources();
 

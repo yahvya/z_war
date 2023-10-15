@@ -51,8 +51,10 @@ namespace Game::Scene::GameScene {
                             std::vector<Character*> charactersList{};
 
                             // chargement des personnages et création de l'animation
-                                std::for_each(charactersDirList.begin(), charactersDirList.end(), [this,&charactersList](const auto &dirPath){
-                                    charactersList.push_back(new FileCharacter(this->linkedGame,dirPath) );
+                                std::for_each(charactersDirList.begin(), charactersDirList.end(), [this,&charactersList](const auto dirPath){
+                                    auto character = new FileCharacter(this->linkedGame,dirPath.c_str());
+
+                                    if(character->loadCharacterDatas() ) charactersList.push_back(character);
                                 });
 
                                 charactersAnimation = new CharacterSwitcherAnimation(charactersList);

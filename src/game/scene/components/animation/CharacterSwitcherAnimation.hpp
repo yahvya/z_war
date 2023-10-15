@@ -16,6 +16,10 @@ namespace Game::Scene::Components::Animation{
      */
     class CharacterSwitcherAnimation : public Animation::Animation{
         public:
+            /**
+             *
+             * @param characters liste des personnages (déjà chargés)
+             */
             CharacterSwitcherAnimation(std::vector<Character *> characters) noexcept;
 
             /**

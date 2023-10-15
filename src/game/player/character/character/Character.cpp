@@ -42,7 +42,7 @@ namespace Game::Player::Character::Character{
 
     bool Character::loadFromNode(YAML::Node characterDatas) noexcept{
         // récupération des informations du personnage
-        
+        TraceLog(LOG_INFO,characterDatas["name"].as<std::string>().c_str());
 
         return false;
     }

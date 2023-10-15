@@ -22,8 +22,8 @@ namespace Game::Utils {
         return -1;
     }
 
-    std::vector<const char*> FileUtils::getRandomElementsInDir(const char* dirPath,unsigned int countOfElements) noexcept{
-        std::vector<const char*> elements{};
+    std::vector<std::string> FileUtils::getRandomElementsInDir(const char* dirPath,unsigned int countOfElements) noexcept{
+        std::vector<std::string> elements{};
 
         try{
             // récupération du nombre d'élements pouvant être récupéré
@@ -58,7 +58,7 @@ namespace Game::Utils {
                         auto number = randomNumbers[index];
                         auto next = std::next(dirIterator,number - previousPlace);
 
-                        elements.push_back(next->path().string().c_str() );
+                        elements.push_back(next->path().string() );
 
                         previousPlace = number;
                     }
