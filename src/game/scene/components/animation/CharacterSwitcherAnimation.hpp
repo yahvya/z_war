@@ -18,7 +18,7 @@ namespace Game::Scene::Components::Animation{
         public:
             /**
              *
-             * @param characters liste des personnages (déjà chargés)
+             * @param characters liste des personnages (non chargés)
              */
             CharacterSwitcherAnimation(std::vector<Character *> characters) noexcept;
 

@@ -1,0 +1,39 @@
+# liste des images du personnage
+images:
+  1 : "images/1.ong "
+  2 : "images/1.ong"
+
+# nom de base du personnage
+name: Nom du personnage
+
+# énergie requiwe pour passer dans cette forme
+energy: 0
+
+# durée de la forme
+duration: "{INFINITE}"
+
+# formule de calcul du nombre de points donné par un combo
+combo-gain-formula: "{COUNT_OF_HITS} * {ATTACK_SPEED}"
+
+# points de vie de base du bouclier
+shield-points: 300
+
+# liste de clés des images nécessaires pour le bouclier
+shield-images: [1,2,3,4]
+
+# liste de clés des images nécessaires pour tomber
+fell-images: [1,2,3,4,5]
+
+# liste de clés des images nécessaires pour se relever
+get-up-images: [1,2,3,4]
+
+# liste des actions du personnages (permet le chargement partiel)
+actions-map:
+  crouch : "actions/crouch.yaml"
+  go-left: "actions/go-left.yaml"
+  go-right: "actions/go-right.yaml"
+  jump-to-left: "jump-to-left.yaml"
+  jump-to-right : "actions/jump-to-right.yaml"
+  roulade-left : "actions/roulade-left.yaml"
+  roulade-right : "actions/roulade-right.yaml"
+  static-jump: "actions/static-jump.yaml"

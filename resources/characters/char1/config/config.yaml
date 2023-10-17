@@ -1,0 +1,22 @@
+# liste des controllers configurés (même pour toutes les formes du personnage)
+controllers: ["keyboard","gamepad"]
+
+# map des chemins de dossier des formes du personnage
+forms:
+  # nom de forme unique
+  - name: "Forme de base"
+    path: "base-form/"
+
+# chemin de poster du personnage
+presentation-images: "sprites/"
+
+# configuration de l'animation de présentation du personnage
+presentation-animation:
+  # nom de la forme de l'animation
+  form: "Forme de base"
+
+  # liste des actions au chargement requis pour l'animation
+  required-actions: ["static-jump","roulade-left","roulade-right"]
+
+  # action à éxécuter pour l'animation dans l'ordre
+  animation: ["static-jump","static-jump","roulade-right","roulade-left","jump-to-right"]

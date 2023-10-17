@@ -1,0 +1,33 @@
+# action pour se baisser (voir description du format des actions)
+# action pour rouler au sol vers la droite
+
+action: "ROULADE_RIGHT"
+description:
+  type: "{ SIMPLE }"
+  images: [ 4,3,2,1 ]
+  keyboard:
+    type: [ "{ COMBINED-TOUCH }","{ SEQUENCE }" ]
+    touch: [ "{ ARROW-RIGHT }","{ ARROW-DOWN }" ]
+    sequence:
+      step-1:
+        pre-actions: [
+          "STORE(({ PLAYER_X_POS } + 40),PLAYER_DST_X_POS_ROULADE_RIGHT)"
+        ]
+        end-actions: [
+          "FREE(PLAYER_DST_X_POS_ROULADE_RIGHT)"
+        ]
+        images: [ 1,2,3 ]
+        to-do: [
+          "{ PLAYER_X_POS } = ({ PLAYER_X_POS } + 2)",
+          "PLAYER_BODY_ACTION(CROUCH)"
+        ]
+        cond: [
+          "INFERIOR({ PLAYER_DST_X_POS_ROULADE_RIGHT },{ PLAYER_X_POS })"
+        ]
+  gamepad:
+    type: [ "{ CONDITION }","{ SEQUENCE-REFERENCE }" ]
+    cond: [
+      "SUPERIOR({ GAMEPAD_AXIS_LEFT_X },0.5)",
+      "SUPERIOR({ GAMEPAD_AXIS_LEFT_Y },0.5)"
+    ]
+    sequence-reference: "../keyboard/sequence"

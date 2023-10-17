@@ -1,0 +1,22 @@
+# action pour se baisser (voir description du format des actions)
+# action pour se baisser
+
+action: "CROUCH"
+description:
+  type: "{REPEATABLE}"
+  count-of-repeat: "{INFINITE}"
+  images: [1,2,3]
+  keyboard:
+    type: ["{SIMPLE}"]
+    touch: "{ARROW_DOWN}"
+    to-do: [
+      "PLAYER_BODY_ACTION(CROUCH)"
+    ]
+  gamepad:
+    type: ["{CONDITION}"]
+    cond: [
+      "INFERIOR({GAMEPAD_AXIS_LEFT_Y},0.7)"
+    ]
+    to-do: [
+      "PLAYER_BODY_ACTION(CROUCH)"
+    ]

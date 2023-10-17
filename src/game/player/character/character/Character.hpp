@@ -18,19 +18,12 @@ namespace Game::Player::Character::Character{
             /**
              * données globales d'un personnage du jeux
              */
-            typedef struct CharacterDatas{
+            typedef struct{
                 public:
                     /**
                      * nom du personnage
                      */
                     const char* name;
-
-                    /**
-                     * si les données sont chargés
-                     */
-                    bool isLoaded;
-
-                    CharacterDatas() noexcept : isLoaded(false)  {};
             }CharacterDatas;
 
         public:
@@ -41,39 +34,16 @@ namespace Game::Player::Character::Character{
             explicit Character(Core::Game* linkedGame) noexcept;
 
             /**
-             * charge les données du joueur
-             * @return si le chargement à réussi
-             */
-            virtual bool loadCharacterDatas() noexcept = 0;
-
-            /**
              *
              * @return les données du personnage
              */
             CharacterDatas getDatas() noexcept;
 
-        protected:
             /**
-             * charge la configuration personnage à partir d'un fichier yaml au chemin donné
-             * @param path chemin du fichier joueur dans les ressources
-             * @return si le chargement a réussi
+             * charge les données pour l'animation
+             * @return si le chargement à bien réussi
              */
-             virtual bool loadFromFile(const char* path) noexcept;
-
-             /**
-              * charge la configuration personnage à partir d'un contenu de fichier yaml
-              * @param fileCcontent contenu du fichier
-              * @return si le chargement a réussi
-              */
-             virtual bool loadFromContent(const char* fileContent) noexcept;
-
-             /**
-              * charge la configuration personnage à partir d'un node yaml
-              * @param characterDatas données yaml dans le node
-              * @attention utilisé par les autres fonction de chargement
-              * @return si le chargement a réussi
-              */
-             virtual bool loadFromNode(YAML::Node characterDatas) noexcept;
+            virtual bool loadAnimationDatas() noexcept = 0;
 
         protected:
             /**

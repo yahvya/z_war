@@ -44,7 +44,7 @@ namespace Game::Scene::GameScene {
                         if(countOfFiles <= 0) throw std::runtime_error("Pas de personnage d'animation trouvé");
 
                         // récupération de la liste des dossiers de personnage et création de l'animation
-                            const unsigned int maxCharacters = 3;
+                            const unsigned int maxCharacters = 2;
 
                             auto charactersDirList = FileUtils::getRandomElementsInDir(dirPath,GetRandomValue(1,static_cast<int>(countOfFiles > maxCharacters ? maxCharacters : countOfFiles) ) );
 
@@ -52,9 +52,7 @@ namespace Game::Scene::GameScene {
 
                             // chargement des personnages et création de l'animation
                                 std::for_each(charactersDirList.begin(), charactersDirList.end(), [this,&charactersList](const auto dirPath){
-                                    auto character = new FileCharacter(this->linkedGame,dirPath.c_str());
-
-                                    if(character->loadCharacterDatas() ) charactersList.push_back(character);
+                                    charactersList.push_back(new FileCharacter(this->linkedGame,dirPath.c_str()) );
                                 });
 
                                 charactersAnimation = new CharacterSwitcherAnimation(charactersList);

@@ -23,7 +23,21 @@ namespace Game::Player::Character::GameCharacters {
              */
             explicit FileCharacter(Core::Game* linkedGame,const char* characterDirname);
 
-            bool loadCharacterDatas() noexcept override;
+            /**
+             * charge la configuration personnage à partir d'un fichier yaml au chemin donné
+             * @param path chemin du fichier joueur dans les ressources
+             * @return si le chargement a réussi
+             */
+            bool loadFromFile(const char* path) noexcept;
+
+            /**
+             * charge la configuration personnage à partir d'un contenu de fichier yaml
+             * @param fileCcontent contenu du fichier
+             * @return si le chargement a réussi
+             */
+            bool loadFromContent(const char* fileContent) noexcept;
+
+            bool loadAnimationDatas() noexcept override;
 
         private:
             /**

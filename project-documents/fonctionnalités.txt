@@ -35,12 +35,13 @@ fonctionnalités du jeux :
         - pour faire une évolution il faut avoir charger son énergie jusqu'a un certains point
         - on peut charger son énergie en enchainant l'adversaire de coup les coups cumulés en apportent (si on reçoit un coup ça diminue un peu et les coups cumulés repartent de 0
         - plus les coups cumulés sont important plus l'energie monte vite
-        - l'évotion à une durée dans le temps en fonction du personnage (plus l'évolution peut être chargé vite moins elle durera longtemps vise versa)
+        - l'évolution à une durée dans le temps en fonction du personnage (plus l'évolution peut être chargé vite moins elle durera longtemps vise versa)
         - chaque coup à sa vitesse d'exécution propre à elle
 
     - mouvement basique
     - mouvement de simple double triple ... saut
     - mouvement de saut dans une direction
+    - se baisser
     - mouvement de téléportation sur une zone fixé d'avance (pouvant être le joueur avdersaire ou dans la scène)
     - mouvement de lancer d'objet
     - mouvement de blocage
