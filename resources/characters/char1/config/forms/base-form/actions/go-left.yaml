@@ -8,7 +8,7 @@ description:
   touch-config:
     keyboard:
       type: ["{SIMPLE}"]
-      touch: "{LEFT_ARROW"}
+      touch: "{LEFT_ARROW}"}
       to-do: [
         "{PLAYER_POS_X} = ({PLAYER_POS_X} - 10)"
       ]

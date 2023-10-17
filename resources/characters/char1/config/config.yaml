@@ -1,3 +1,5 @@
+# tout chemin commence à la base du dossier (char1)
+
 # liste des controllers configurés (même pour toutes les formes du personnage)
 controllers: ["keyboard","gamepad"]
 
@@ -5,10 +7,10 @@ controllers: ["keyboard","gamepad"]
 forms:
   # nom de forme unique
   - name: "Forme de base"
-    path: "base-form/"
+    path: "config/forms/base-form/"
 
 # chemin de poster du personnage
-presentation-images: "sprites/"
+presentation-image-path: "sprites/"
 
 # configuration de l'animation de présentation du personnage
 presentation-animation:

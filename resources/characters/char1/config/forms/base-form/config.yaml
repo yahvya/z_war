@@ -6,7 +6,7 @@ images:
 # nom de base du personnage
 name: Nom du personnage
 
-# énergie requiwe pour passer dans cette forme
+# énergie requise pour passer dans cette forme
 energy: 0
 
 # durée de la forme
@@ -29,11 +29,11 @@ get-up-images: [1,2,3,4]
 
 # liste des actions du personnages (permet le chargement partiel)
 actions-map:
-  crouch : "actions/crouch.yaml"
-  go-left: "actions/go-left.yaml"
-  go-right: "actions/go-right.yaml"
-  jump-to-left: "jump-to-left.yaml"
-  jump-to-right : "actions/jump-to-right.yaml"
-  roulade-left : "actions/roulade-left.yaml"
-  roulade-right : "actions/roulade-right.yaml"
-  static-jump: "actions/static-jump.yaml"
+  crouch : "forms/base-form/actions/crouch.yaml"
+  go-left: "forms/base-form/actions/go-left.yaml"
+  go-right: "forms/base-form/actions/go-right.yaml"
+  jump-to-left: "forms/base-form/actions/jump-to-left.yaml"
+  jump-to-right : "forms/base-form/actions/jump-to-right.yaml"
+  roulade-left : "forms/base-form/actions/roulade-left.yaml"
+  roulade-right : "forms/base-form/actions/roulade-right.yaml"
+  static-jump: "forms/base-form/actions/static-jump.yaml"
