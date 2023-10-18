@@ -7,7 +7,11 @@ set(CMAKE_EXE_LINKER_FLAGS -static)
 project(z_war)
 
 #recherche raylib des packages (raylib)
-find_package(raylib REQUIRED)
+find_package(raylib CONFIG REQUIRED)
+
+
+# ajout de raylib gui
+find_path(RAYGUI_INCLUDE_DIRS "raygui.h")
 
 # création de l'executable
 add_executable(z_war src/main.cpp
@@ -47,7 +51,7 @@ add_executable(z_war src/main.cpp
 
 # ajout de yaml-cpp
 add_subdirectory(libs/yaml-cpp)
-include_directories(libs/yaml-cpp/include)
+include_directories(libs/yaml-cpp/include ${RAYGUI_INCLUDE_DIRS})
 
 # ajout des librairies
 target_link_libraries(${PROJECT_NAME}

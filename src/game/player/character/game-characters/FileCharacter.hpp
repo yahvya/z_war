@@ -21,23 +21,27 @@ namespace Game::Player::Character::GameCharacters {
              * @param linkedGame jeux lié
              * @param characterDirname nom du dossier du personnage
              */
-            explicit FileCharacter(Core::Game* linkedGame,const char* characterDirname);
-
-            /**
-             * charge la configuration personnage à partir d'un fichier yaml au chemin donné
-             * @param path chemin du fichier joueur dans les ressources
-             * @return si le chargement a réussi
-             */
-            bool loadFromFile(const char* path) noexcept;
-
-            /**
-             * charge la configuration personnage à partir d'un contenu de fichier yaml
-             * @param fileCcontent contenu du fichier
-             * @return si le chargement a réussi
-             */
-            bool loadFromContent(const char* fileContent) noexcept;
+            explicit FileCharacter(Core::Game* linkedGame,const std::string characterDirname);
 
             bool loadAnimationDatas() noexcept override;
+
+            /**
+             * charge partiellement les données du fichier
+             * @param filePath chemin du fichier
+             * @param pathList liste des clés à récupéré au format (clé.sous-clé...) ou (clé.* pour récupéré tout le contenu de l'objet)
+             * @param exceptOnKeyNotFound envoyé une exception si une clé n'est pas trouvé , default true
+             * @return les données récupéré indicés par les clés fournies
+             */
+            static YAML::Node partialLoadFrom(const char* filePath,std::vector<const char*> pathList,bool exceptOnKeyNotFound = true);
+
+            /**
+             * charge partiellement les données du fichier
+             * @param datas données du fichier
+             * @param pathList liste des clés à récupéré au format (clé.sous-clé...) ou (clé.* pour récupéré tout le contenu de l'objet)
+             * @param exceptOnKeyNotFound envoyé une exception si une clé n'est pas trouvé , default true
+             * @return les données récupéré indicés par les clés fournies
+             */
+            static YAML::Node partialLoadFrom(YAML::Node datas,std::vector<const char*> pathList,bool exceptOnKeyNotFound = true);
 
         private:
             /**

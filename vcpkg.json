@@ -5,5 +5,8 @@
   "dependencies" : [ {
     "name" : "raylib",
     "version>=" : "4.5.0#2"
+  }, {
+    "name" : "raygui",
+    "version>=" : "4.0"
   } ]
 }

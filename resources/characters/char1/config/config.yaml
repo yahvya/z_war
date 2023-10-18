@@ -7,7 +7,7 @@ controllers: ["keyboard","gamepad"]
 forms:
   # nom de forme unique
   - name: "Forme de base"
-    path: "config/forms/base-form/"
+    path: "config/forms/base-form/config.yaml"
 
 # chemin de poster du personnage
 presentation-image-path: "sprites/"

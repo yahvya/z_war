@@ -52,7 +52,7 @@ namespace Game::Scene::GameScene {
 
                             // chargement des personnages et création de l'animation
                                 std::for_each(charactersDirList.begin(), charactersDirList.end(), [this,&charactersList](const auto dirPath){
-                                    charactersList.push_back(new FileCharacter(this->linkedGame,dirPath.c_str()) );
+                                    charactersList.push_back(new FileCharacter(this->linkedGame,dirPath) );
                                 });
 
                                 charactersAnimation = new CharacterSwitcherAnimation(charactersList);

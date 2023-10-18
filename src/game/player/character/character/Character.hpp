@@ -11,6 +11,7 @@
 using namespace Game::Core;
 
 namespace Game::Player::Character::Character{
+
     /**
      * personnage du jeux
      */
@@ -20,10 +21,37 @@ namespace Game::Player::Character::Character{
              * données sur une action d'un personnage
              */
             typedef struct CharacterAction{
-                const char* actionDescriptionFilePath;
+                /**
+                 * chemin du fichier de description de l'action
+                 */
+                const char* actionDescriptionFilePath = nullptr;
 
+                /**
+                 * nom de l'action
+                 */
+                const char* actionName = nullptr;
+
+                /**
+                 * description de l'action
+                 */
+                YAML::Node actionDescription;
+
+            private:
+                /**
+                 * si la description de l'action est bien chargé
+                 */
+                bool actionDescriptionIsCorrect = false;
+
+            public:
+                /**
+                 *
+                 * @return si l'action est chargé
+                 */
                 bool getActionIsLoaded(){
-                    return false;
+                    return
+                        this->actionDescriptionFilePath != nullptr &&
+                        this->actionName != nullptr &&
+                        this->actionDescriptionIsCorrect;
                 };
             }CharacterAction;
 
@@ -61,7 +89,7 @@ namespace Game::Player::Character::Character{
                      *
                      * @return si le chemin du dossier est chargé
                      */
-                    bool getDirPathIsLoaded(){
+                    bool getDirPathIsLoaded() const{
                         return this->dirPath != nullptr;
                     }
 
@@ -77,7 +105,7 @@ namespace Game::Player::Character::Character{
                      *
                      * @return si les images sont chargés
                      */
-                    bool getImagesAreLoaded(){
+                    bool getImagesAreLoaded() const{
                         return this->imagesMap.empty();
                     }
 
@@ -86,7 +114,7 @@ namespace Game::Player::Character::Character{
                      * @param key clé de l'image
                      * @return si l'image est chargé
                      */
-                    bool getImageIsLoaded(const char* key){
+                    bool getImageIsLoaded(const char* key) const{
                         return this->imagesMap.contains(key);
                     }
 
@@ -100,7 +128,7 @@ namespace Game::Player::Character::Character{
                      * 
                      * @return si le nom du personnage est chargé
                      */
-                    bool getCharacterNameIsLoad(){
+                    bool getCharacterNameIsLoad() const{
                         return this->characterName != nullptr;
                     }
 
@@ -108,13 +136,13 @@ namespace Game::Player::Character::Character{
                     /**
                      * énergie requise pour charger débloquer la forme
                      */
-                    const float requiredEnergy = -1.f;
+                    float requiredEnergy = -1.f;
 
                     /**
                      *
                      * @return si l'énergie requise pour charger la forme est chargé
                      */
-                    bool getRequiredEnergyIsLoaded(){
+                    bool getRequiredEnergyIsLoaded() const{
                         return this->requiredEnergy > -1.f;
                     }
 
@@ -122,12 +150,12 @@ namespace Game::Player::Character::Character{
                     /**
                      * durée de la forme en seconde
                      */
-                    const float duration = -1.f;
+                    float duration = -1.f;
 
                     /**
                      * @return si la durée de la forme est chargé
                      */
-                    bool getDurationIsLoaded(){
+                    bool getDurationIsLoaded() const{
                         return this->duration != -1.f;
                     }
 
@@ -135,12 +163,12 @@ namespace Game::Player::Character::Character{
                     /**
                      * formule de gain de combo
                      */
-                    const float comboGainFormula = -1.f;
+                    float comboGainFormula = -1.f;
 
                     /**
                      * @return si la formule de gain de combo est chargé
                      */
-                    bool getComboGainFormulaIsLoaded(){
+                    bool getComboGainFormulaIsLoaded() const{
                         return this->comboGainFormula != -1.f;
                     }
 
@@ -148,12 +176,12 @@ namespace Game::Player::Character::Character{
                     /**
                      * points de base de bouclier
                      */
-                    const float shieldPoints = -1.f;
+                    float shieldPoints = -1.f;
 
                     /**
                      * @return si les points de base sont chargés
                      */
-                    bool getShieldPointsIsLoaded(){
+                    bool getShieldPointsIsLoaded() const{
                         return this->shieldPoints != -1.f;
                     }
 
@@ -167,7 +195,7 @@ namespace Game::Player::Character::Character{
                      *
                      * @return si la liste des images boucliers sont chargés
                      */
-                    bool getShieldImagesListAreLoaded(){
+                    bool getShieldImagesListAreLoaded() const{
                         return !this->shieldImagesList.empty();
                     }
 
@@ -181,7 +209,7 @@ namespace Game::Player::Character::Character{
                      *
                      * @return si la liste des images tomber sont chargés
                      */
-                    bool getFellImagesListAreLoaded(){
+                    bool getFellImagesListAreLoaded() const{
                         return !this->fellImagesList.empty();
                     }
 
@@ -195,7 +223,7 @@ namespace Game::Player::Character::Character{
                      *
                      * @return si la liste des images tomber sont chargés
                      */
-                    bool getUpImagesListAreLoaded(){
+                    bool getUpImagesListAreLoaded() const{
                         return !this->getUpImagesList.empty();
                     }
 
@@ -209,7 +237,7 @@ namespace Game::Player::Character::Character{
                      *
                      * @return si toutes les actions sont chargé
                      */
-                    bool getActionsMapIsLoaded(){
+                    bool getActionsMapIsLoaded() const{
                         if(this->actionsMap.empty() ) return false;
 
                         return std::all_of(this->actionsMap.begin(),this->actionsMap.end(),[](auto actionData){
@@ -230,7 +258,7 @@ namespace Game::Player::Character::Character{
                  *
                  * @return si la forme est chargé
                  */
-                bool getFormIsLoaded(){
+                bool getFormIsLoaded() const{
                     return
                         this->getActionsMapIsLoaded() &&
                         this->getCharacterNameIsLoad() &&
@@ -261,7 +289,7 @@ namespace Game::Player::Character::Character{
                         /**
                          * @return si toutes les formes du personnage sont chargé
                          */
-                        bool getCharacterFormsAreLoaded(){
+                        bool getCharacterFormsAreLoaded() const{
                             if(this->characterFormsMap.empty() ) return false;
 
                             return std::all_of(this->characterFormsMap.begin(),this->characterFormsMap.end(),[](auto formData){
@@ -307,7 +335,7 @@ namespace Game::Player::Character::Character{
                          *
                          * @return si le chemin poster est chargé
                          */
-                        bool getPresentationImagePathIsLoaded(){
+                        bool getPresentationImagePathIsLoaded() const{
                             return this->presentationImagePath != nullptr;
                         }
 
@@ -330,7 +358,7 @@ namespace Game::Player::Character::Character{
                          *
                          * @return si les controllers sont chargés
                          */
-                        bool getControllersAreLoaded(){
+                        bool getControllersAreLoaded() const{
                             return !this->controllers.empty();
                         }
 
@@ -341,7 +369,7 @@ namespace Game::Player::Character::Character{
                          *
                          * @return si les données d'animation sont chargé
                          */
-                        bool getPresentationAnimationDataIsLoaded(){
+                        bool getPresentationAnimationDataIsLoaded() const{
                             return this->presentationAnimationData;
                         }
                     /**
@@ -368,10 +396,10 @@ namespace Game::Player::Character::Character{
              *
              * @return les données du personnage
              */
-            CharacterDatas getDatas() noexcept;
+            CharacterDatas* getDatas() noexcept;
 
             /**
-             * charge les données pour l'animation
+             * charge les données pour l'animation, peut être appelé plusieurs fois
              * @return si le chargement à bien réussi
              */
             virtual bool loadAnimationDatas() noexcept = 0;

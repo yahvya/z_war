@@ -6,9 +6,9 @@
 #include "yaml-cpp/yaml.h"
 
 namespace Game::Player::Character::Character{
-    Character::Character(Core::Game *linkedGame) noexcept : linkedGame(linkedGame) {}
+    Character::Character(Core::Game *linkedGame) noexcept : linkedGame(linkedGame),characterDatas(new CharacterDatas() ) {}
 
-    Character::CharacterDatas Character::getDatas() noexcept{
+    Character::CharacterDatas* Character::getDatas() noexcept{
         return this->characterDatas;
     }
 }
