@@ -3,7 +3,7 @@
 # informations globales jeux / créateurs / version
 version: 1
 appname: Z-war
--creators:
+creators:
   - fullname: Yahaya Bathily
     github: https://github.com/yahvya/
     role: Créateur et développeur du jeux

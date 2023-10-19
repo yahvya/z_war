@@ -7,6 +7,9 @@
 
 namespace Game::Player::Player {
 
+    /**
+     * joueur abstrait
+     */
     class Player {
 
     };

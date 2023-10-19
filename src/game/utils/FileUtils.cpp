@@ -9,7 +9,7 @@
 #include "raylib.h"
 
 namespace Game::Utils {
-    unsigned int FileUtils::countOfFileInDir(const char* dirPath) noexcept{
+    unsigned int FileUtils::countOfFileInDir(std::string dirPath) noexcept{
         try{
             if(!std::filesystem::is_directory(dirPath) ) throw std::runtime_error("Le dossier n'existe pas");
 
@@ -22,7 +22,7 @@ namespace Game::Utils {
         return -1;
     }
 
-    std::vector<std::string> FileUtils::getRandomElementsInDir(const char* dirPath,unsigned int countOfElements) noexcept{
+    std::vector<std::string> FileUtils::getRandomElementsInDir(std::string dirPath,unsigned int countOfElements) noexcept{
         std::vector<std::string> elements{};
 
         try{

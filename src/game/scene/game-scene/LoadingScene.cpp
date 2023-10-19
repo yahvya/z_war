@@ -37,7 +37,7 @@ namespace Game::Scene::GameScene {
 
                 // récupération des dossiers aléatoires
                     try{
-                        auto dirPath = (std::string(globalRessource->resourcesDirPath) + ResourcesManager::CHARACTERS_DIR_PATH).c_str();
+                        auto dirPath = globalRessource->resourcesDirPath + ResourcesManager::CHARACTERS_DIR_PATH;
 
                         auto countOfFiles = FileUtils::countOfFileInDir(dirPath);
 

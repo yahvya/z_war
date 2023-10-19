@@ -2,6 +2,9 @@
 images:
   1 : "images/1.ong "
   2 : "images/1.ong"
+  3: "images"
+  4: "encore"
+  5: "test"
 
 # nom de base du personnage
 name: Nom du personnage

@@ -21,9 +21,17 @@ namespace Game::Player::Character::GameCharacters {
              * @param linkedGame jeux lié
              * @param characterDirname nom du dossier du personnage
              */
-            explicit FileCharacter(Core::Game* linkedGame,const std::string characterDirname);
+            explicit FileCharacter(Core::Game* linkedGame,std::string characterDirname);
 
             bool loadAnimationDatas() noexcept override;
+
+            /**
+             * charge le formulaire donnée
+             * @param formName nom de la forme
+             * @param formConfigFilePath chemin de configuration du formulaire à charger
+             * @return si le chargement réussi
+             */
+            bool loadForm(std::string formName,std::string formConfigFilePath) noexcept;
 
             /**
              * charge partiellement les données du fichier
@@ -32,7 +40,7 @@ namespace Game::Player::Character::GameCharacters {
              * @param exceptOnKeyNotFound envoyé une exception si une clé n'est pas trouvé , default true
              * @return les données récupéré indicés par les clés fournies
              */
-            static YAML::Node partialLoadFrom(const char* filePath,std::vector<const char*> pathList,bool exceptOnKeyNotFound = true);
+            static YAML::Node partialLoadFrom(std::string filePath,std::vector<std::string> pathList,bool exceptOnKeyNotFound = true);
 
             /**
              * charge partiellement les données du fichier
@@ -41,13 +49,13 @@ namespace Game::Player::Character::GameCharacters {
              * @param exceptOnKeyNotFound envoyé une exception si une clé n'est pas trouvé , default true
              * @return les données récupéré indicés par les clés fournies
              */
-            static YAML::Node partialLoadFrom(YAML::Node datas,std::vector<const char*> pathList,bool exceptOnKeyNotFound = true);
+            static YAML::Node partialLoadFrom(YAML::Node datas,std::vector<std::string> pathList,bool exceptOnKeyNotFound = true);
 
         private:
             /**
              * nom du dossier du personnage
              */
-            const char* characterDirname;
+            std::string characterDirname;
     };
 }
 

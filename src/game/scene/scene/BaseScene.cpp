@@ -20,15 +20,11 @@ namespace Game::Scene::Scene {
         return this;
     }
 
-    BaseScene* BaseScene::initSceneTransition() noexcept{
-        return this;
-    }
-
     bool BaseScene::configWindow() noexcept{
         try {
             // configuration de la fenêtre
                 SetWindowSize(this->width, this->height);
-                SetWindowTitle((std::string(this->windowName) + this->linkedGame->getResourcesManager()->getGameGlobalResources()->appName).c_str() );
+                SetWindowTitle((this->windowName + this->linkedGame->getResourcesManager()->getGameGlobalResources()->appName).c_str() );
             // récupération et mise à jour des fps
                 this->setFps();
 

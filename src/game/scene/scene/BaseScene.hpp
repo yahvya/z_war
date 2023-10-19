@@ -37,12 +37,6 @@ namespace Game::Scene::Scene{
             virtual bool configWindow() noexcept;
 
             /**
-             * configure la transition de fenêtre en réinitialisant les configurations fenêtre
-             * @return self
-             */
-            virtual BaseScene* initSceneTransition() noexcept;
-
-            /**
              * stoppe le dessin en mettant à jour le booléen de status
              * thread safe
              * @return self
@@ -111,7 +105,7 @@ namespace Game::Scene::Scene{
             /**
              * nom de la fenêtre
              */
-             const char* windowName;
+             std::string windowName;
     };
 
 }

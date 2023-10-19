@@ -31,18 +31,18 @@ namespace Game::Resource {
                 this->gameGlobalResources->specialNormalFontSize = fileContent["special-font-size"].as<float>();
                 this->gameGlobalResources->specialLargerFontSize = fileContent["special-font-larger-size"].as<float>();
                 this->gameGlobalResources->fps = fileContent["fps"].as<int>();
-                this->gameGlobalResources->creators = fileContent["-creators"].as<std::vector<YAML::Node> >();
+                this->gameGlobalResources->creators = fileContent["creators"].as<std::vector<YAML::Node> >();
 
             // chargements des fichiers de polices d'écriture
 
                 auto basicFont = LoadFont(
-                (std::string(this->gameGlobalResources->resourcesDirPath) + ResourcesManager::FONTS_DIR_PATH + "normal.ttf").c_str()
+                    (this->gameGlobalResources->resourcesDirPath + ResourcesManager::FONTS_DIR_PATH + "normal.ttf").c_str()
                 );
 
                 if (!IsFontReady(basicFont) ) throw std::runtime_error("Echec de chargement de la police normale");
 
                 auto specialFont = LoadFont(
-                (std::string(this->gameGlobalResources->resourcesDirPath) + ResourcesManager::FONTS_DIR_PATH + "special.ttf").c_str()
+                (this->gameGlobalResources->resourcesDirPath + ResourcesManager::FONTS_DIR_PATH + "special.ttf").c_str()
                 );
 
                 if(!IsFontReady(specialFont) ) throw std::runtime_error("Echec de chargement de la police spéciale");
@@ -86,7 +86,7 @@ namespace Game::Resource {
         try{
             // récupération des données du fichier de configuration
                 auto playerConfigFileContent = YAML::LoadFile(
-                    std::string(this->gameGlobalResources->resourcesDirPath) + ResourcesManager::CONFIG_DIR_PATH + "player/config.yaml"
+                    this->gameGlobalResources->resourcesDirPath + ResourcesManager::CONFIG_DIR_PATH + "player/config.yaml"
                 );
 
 

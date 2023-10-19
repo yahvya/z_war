@@ -24,12 +24,12 @@ namespace Game::Player::Character::Character{
                 /**
                  * chemin du fichier de description de l'action
                  */
-                const char* actionDescriptionFilePath = nullptr;
+                std::string actionDescriptionFilePath;
 
                 /**
                  * nom de l'action
                  */
-                const char* actionName = nullptr;
+                std::string actionName;
 
                 /**
                  * description de l'action
@@ -49,8 +49,8 @@ namespace Game::Player::Character::Character{
                  */
                 bool getActionIsLoaded(){
                     return
-                        this->actionDescriptionFilePath != nullptr &&
-                        this->actionName != nullptr &&
+                        !this->actionDescriptionFilePath.empty() &&
+                        !this->actionName.empty() &&
                         this->actionDescriptionIsCorrect;
                 };
             }CharacterAction;
@@ -62,17 +62,17 @@ namespace Game::Player::Character::Character{
                 /**
                  * nom de la forme lié
                  */
-                const char* formName;
+                std::string formName;
 
                 /**
                  * nom des actions dans requises pour l'animation
                  */
-                std::vector<const char*> requiredActions;
+                std::vector<std::string> requiredActions;
 
                 /**
                  * liste des noms d'actions à lancer dans l'ordre de lancement pour l'animation
                  */
-                std::vector<const char*> animationList;
+                std::vector<std::string> animationList;
             }PresentationAnimationData;
 
             /**
@@ -83,14 +83,14 @@ namespace Game::Player::Character::Character{
                     /**
                      * chemin du dossier de la forme
                      */
-                    const char* dirPath = nullptr;
+                    std::string dirPath;
 
                     /**
                      *
                      * @return si le chemin du dossier est chargé
                      */
                     bool getDirPathIsLoaded() const{
-                        return this->dirPath != nullptr;
+                        return !this->dirPath.empty();
                     }
 
                 // images de la forme
@@ -99,7 +99,7 @@ namespace Game::Player::Character::Character{
                      * @key clé lié à l'image
                      * @value chemin complet de l'image
                      */
-                    std::map<const char*,const char*> imagesMap;
+                    std::map<std::string,std::string> imagesMap;
 
                     /**
                      *
@@ -114,7 +114,7 @@ namespace Game::Player::Character::Character{
                      * @param key clé de l'image
                      * @return si l'image est chargé
                      */
-                    bool getImageIsLoaded(const char* key) const{
+                    bool getImageIsLoaded(std::string key) const{
                         return this->imagesMap.contains(key);
                     }
 
@@ -122,14 +122,14 @@ namespace Game::Player::Character::Character{
                     /**
                      * nom du personnage
                      */
-                    const char* characterName = nullptr;
+                    std::string characterName;
     
                     /**
                      * 
                      * @return si le nom du personnage est chargé
                      */
                     bool getCharacterNameIsLoad() const{
-                        return this->characterName != nullptr;
+                        return !this->characterName.empty();
                     }
 
                 // énergie
@@ -163,13 +163,13 @@ namespace Game::Player::Character::Character{
                     /**
                      * formule de gain de combo
                      */
-                    float comboGainFormula = -1.f;
+                    std::string comboGainFormula;
 
                     /**
                      * @return si la formule de gain de combo est chargé
                      */
                     bool getComboGainFormulaIsLoaded() const{
-                        return this->comboGainFormula != -1.f;
+                        return !this->comboGainFormula.empty();
                     }
 
                 // points de base de bouclier
@@ -189,7 +189,7 @@ namespace Game::Player::Character::Character{
                     /**
                      * liste des clés d'images présentes dans la map d'image dans l'ordre pour rendre l'image de bouclier
                      */
-                    std::vector<const char*> shieldImagesList;
+                    std::vector<std::string> shieldImagesList;
 
                     /**
                      *
@@ -203,7 +203,7 @@ namespace Game::Player::Character::Character{
                     /**
                      * liste des clés d'images présentes dans la map d'image dans l'ordre pour rendre l'image tomber
                      */
-                    std::vector<const char*> fellImagesList;
+                    std::vector<std::string> fellImagesList;
 
                     /**
                      *
@@ -217,7 +217,7 @@ namespace Game::Player::Character::Character{
                     /**
                      * liste des clés d'images présentes dans la map d'image dans l'ordre pour rendre l'image relever
                      */
-                    std::vector<const char*> getUpImagesList;
+                    std::vector<std::string> getUpImagesList;
 
                     /**
                      *
@@ -231,7 +231,7 @@ namespace Game::Player::Character::Character{
                     /**
                      * map des actions du personnage
                      */
-                    std::map<const char*,CharacterAction*> actionsMap;
+                    std::map<std::string,CharacterAction*> actionsMap;
 
                     /**
                      *
@@ -250,7 +250,7 @@ namespace Game::Player::Character::Character{
                      * @param actionName nom de l'action
                      * @return si l'action est chargé
                      */
-                    bool getActionIsLoaded(const char* actionName){
+                    bool getActionIsLoaded(std::string actionName){
                         return this->actionsMap.contains(actionName) && this->actionsMap[actionName]->getActionIsLoaded();
                     }
 
@@ -284,7 +284,7 @@ namespace Game::Player::Character::Character{
                          * map de listage des formes du personnage
                          * @key nom de la forme
                          */
-                        std::map<const char*,CharacterFormData*> characterFormsMap;
+                        std::map<std::string,CharacterFormData*> characterFormsMap;
 
                         /**
                          * @return si toutes les formes du personnage sont chargé
@@ -302,7 +302,7 @@ namespace Game::Player::Character::Character{
                          * @param formName nom de la forme
                          * @return si la forme au nom donné est chargé ou non
                          */
-                        bool getCharacterFormIsLoaded(const char* formName){
+                        bool getCharacterFormIsLoaded(std::string formName){
                             return this->characterFormsMap.contains(formName) && this->characterFormsMap[formName]->getFormIsLoaded();
                         }
 
@@ -312,7 +312,7 @@ namespace Game::Player::Character::Character{
                          * @param actionName nom de l'action
                          * @return si la forme au nom donné est chargé ou non et l'action donné est chargé
                          */
-                        bool getCharacterFormActionIsLoaded(const char* formName,const char* actionName){
+                        bool getCharacterFormActionIsLoaded(std::string formName,std::string actionName){
                             return this->characterFormsMap.contains(formName) && this->characterFormsMap[formName]->getActionIsLoaded(actionName);
                         }
 
@@ -321,13 +321,13 @@ namespace Game::Player::Character::Character{
                         /**
                          * chemin de poster du personnage
                          */
-                        const char* presentationImagePath = nullptr;
+                        std::string presentationImagePath;
 
                         /**
                          *
                          * @return le chemin de poster du personnage
                          */
-                        const char* getPresentationImagePath(){
+                        std::string getPresentationImagePath(){
                             return this->presentationImagePath;
                         }
 
@@ -336,7 +336,7 @@ namespace Game::Player::Character::Character{
                          * @return si le chemin poster est chargé
                          */
                         bool getPresentationImagePathIsLoaded() const{
-                            return this->presentationImagePath != nullptr;
+                            return !this->presentationImagePath.empty();
                         }
 
                     // controlleurs du jeux
@@ -344,13 +344,13 @@ namespace Game::Player::Character::Character{
                         /**
                          * nom du personnage
                          */
-                        std::vector<const char*> controllers;
+                        std::vector<std::string> controllers;
 
                         /**
                          *
                          * @return la liste des controllers
                          */
-                        std::vector<const char*> getControllers(){
+                        std::vector<std::string> getControllers(){
                             return this->controllers;
                         }
 

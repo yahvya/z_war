@@ -160,7 +160,7 @@ namespace Game::Scene::Background::GameBackground{
 
         try{
             auto backgroundConfig = YAML::LoadFile(
-                std::string(this->linkedGame->getResourcesManager()->getGameGlobalResources()->resourcesDirPath) + ResourcesManager::CONFIG_DIR_PATH +
+                this->linkedGame->getResourcesManager()->getGameGlobalResources()->resourcesDirPath + ResourcesManager::CONFIG_DIR_PATH +
                 "scenes/background/grid-background.yaml"
             );
 
