@@ -8,7 +8,7 @@
 namespace Game::Player::Character::Character{
     Character::Character(Core::Game *linkedGame) noexcept : linkedGame(linkedGame),characterDatas(new CharacterDatas() ) {}
 
-    Character::CharacterDatas* Character::getDatas() noexcept{
+    CharacterDatas* Character::getDatas() noexcept{
         return this->characterDatas;
     }
 }

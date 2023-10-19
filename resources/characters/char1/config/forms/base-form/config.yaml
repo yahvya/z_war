@@ -15,6 +15,9 @@ energy: 0
 # durée de la forme
 duration: "{INFINITE}"
 
+# vitesse d'attaque
+attack-speed: 200
+
 # formule de calcul du nombre de points donné par un combo
 combo-gain-formula: "{COUNT_OF_HITS} * {ATTACK_SPEED}"
 

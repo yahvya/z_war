@@ -47,6 +47,7 @@ add_executable(z_war src/main.cpp
         src/game/player/character/game-characters/FileCharacter.hpp
         src/game/utils/FileUtils.cpp
         src/game/utils/FileUtils.hpp
+        src/game/player/character/character/CharacterDescription.hpp
 )
 
 # ajout de yaml-cpp

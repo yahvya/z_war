@@ -1,0 +1,8 @@
+chargement et transformation des variables (dans FileCharacter traiter le cas {INFINITE} pour la récupération de la durée
+traiter dans FileCharacter la récupération des actions
+décommenter la vérification d'existence des images
+
+variables à définir pour la partie:
+
+ATTACK_SPEED
+COUNT_OF_HITS pour un compo

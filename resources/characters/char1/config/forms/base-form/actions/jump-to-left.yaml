@@ -6,7 +6,7 @@ description:
   type: "{SIMPLE}"
   keyboard:
     type: [ "{ COMBINED-TOUCH }","{ SEQUENCE }" ]
-    touch: [ "{ SPACE_BAR }","{ RIGHT_LEFT }" ]
+    touch: [ "{ SPACE-BAR }","{ ARROW-LEFT }" ]
     sequence:
       step-1:
         pre-actions: [
@@ -44,6 +44,6 @@ description:
           ]
   gamepad:
     type: [ "{ SIMPLE }","{ SEQUENCE-REFERENCE }","{ CONDITION }" ]
-    touch: "{ GAMEPAD_X_TOUCH }"
+    touch: "{ GAMEPAD-X-TOUCH }"
     cond: [ "INFERIOR({ GAMEPAD_AXIS_LEFT_X },-0.3)" ]
     sequence-reference: "../keyboard/sequence"

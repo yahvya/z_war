@@ -8,13 +8,13 @@ description:
   images: [1,2,3]
   keyboard:
     type: ["{SIMPLE}"]
-    touch: "{SPACE_BAR}"
+    touch: "{SPACE-BAR}"
     to-do: [
       "{PLAYER_POS_Y} = ({POS_REFERENCE_Y} + {PLAYER_POS_Y} + 10)"
     ]
   gamepad:
-    type: ["{SIMPLE }"]
-    touch: "{ GAMEPAD_X_TOUCH }"
+    type: ["{SIMPLE}"]
+    touch: "{ GAMEPAD-X-TOUCH }"
     to-do: [
       "{PLAYER_POS_Y} = ({POS_REFERENCE_Y} + { PLAYER_POS_Y } + 10)"
     ]

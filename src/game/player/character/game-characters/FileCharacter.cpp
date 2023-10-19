@@ -3,6 +3,7 @@
 //
 
 #include <cstring>
+#include <filesystem>
 #include "FileCharacter.hpp"
 
 #include <iostream>
@@ -16,7 +17,7 @@ namespace Game::Player::Character::GameCharacters {
 
         try{
             // récupération des données du formulaire
-                auto formConfigFileContent = YAML::LoadFile(this->characterDirname + formConfigFilePath );
+                auto formConfigFileContent = YAML::LoadFile(this->characterDirname + formConfigFilePath);
 
                 auto formData = new CharacterFormData();
 
@@ -40,6 +41,7 @@ namespace Game::Player::Character::GameCharacters {
                 // récupération de la durée de la forme
                     if(!formConfigFileContent["duration"]) throw std::runtime_error("La durée de la forme est manquant dans la configuration");
                     // en attente de récupération de variable
+                    formData->duration = 10;
 
                 // récupération de la formule de calcul combo
                     if(!formConfigFileContent["combo-gain-formula"]) throw std::runtime_error("La formule de calcul du combo manque dans la configuration");
@@ -65,6 +67,11 @@ namespace Game::Player::Character::GameCharacters {
 
                     for(auto& key : formData->fellImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence chute");
 
+                // récupération de la vitesse d'attaque
+                    if(!formConfigFileContent["attack-speed"]) throw std::runtime_error("La vitesse d'attaque du personnage manque dans la configuration");
+
+                    formData->attackSpeed = formConfigFileContent["attack-speed"].as<float>();
+
                 // récupération des images de la séquence relever
                     if(!formConfigFileContent["get-up-images"]) throw std::runtime_error("La liste des clés d'images décrivant se relever manque dans la configuration");
 
@@ -72,10 +79,15 @@ namespace Game::Player::Character::GameCharacters {
 
                     for(auto& key : formData->getUpImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence chute");
 
+                // récupération des actions
+//                    formData->actionsMap["test"] = new CharacterAction();
+//                    formData->actionsMap["test"]->actionDescription = "t'et";
+//                    formData->actionsMap["test"]->actionName = "encore";
+//                    formData->actionsMap["test"]->actionDescriptionFilePath = "beinbe";
 
+            this->characterDatas->characterFormsMap[formName] = formData;
 
-                this->characterDatas->characterFormsMap[formName] = formData;
-                std::cout << formData << std::endl;
+            return true;
         }
         catch(std::exception& e){
             TraceLog(LOG_ERROR,"Echec de chargement de la forme");
