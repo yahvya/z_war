@@ -14,11 +14,11 @@ description:
           "STORE(({ PLAYER_X_POS } + 40),PLAYER_DST_X_POS_ROULADE_RIGHT)"
         ]
         end-actions: [
-          "FREE(PLAYER_DST_X_POS_ROULADE_RIGHT)"
+          "FREE({PLAYER_DST_X_POS_ROULADE_RIGHT})"
         ]
         images: [ 1,2,3 ]
         to-do: [
-          "{ PLAYER_X_POS } = ({ PLAYER_X_POS } + 2)",
+          "UPDATE({ PLAYER_X_POS } ,({ PLAYER_X_POS } + 2))",
           "PLAYER_BODY_ACTION(CROUCH)"
         ]
         cond: [

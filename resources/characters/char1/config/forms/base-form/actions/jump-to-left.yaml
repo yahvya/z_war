@@ -16,28 +16,28 @@ description:
           "STORE(30,SPEED_Y_JUMP_TO_LEFT)"
         ]
         to-do: [
-          "{ PLAYER_POS_X } = ({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } )",
-          "{ PLAYER_POS_Y } = ({ PLAYER_POS_Y } + { SPEED_Y_JUMP_TO_LEFT } )"
+          "UPDATE({ PLAYER_POS_X } ,({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
+          "UPDATE({ PLAYER_POS_Y } ,({ PLAYER_POS_Y } + { SPEED_Y_JUMP_TO_LEFT } ))"
         ]
         cond: [
           "SUPERIOR(({ PLAYER_BASE_Y_JUMP_TO_LEFT } + { PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT }),({ POS_REFERENCE_Y } + { PLAYER_Y_POS }))"
         ]
         images: [ 1,2,3,4 ]
         end-actions: [
-          "FREE(PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT)",
-          "FREE(PLAYER_BASE_Y_JUMP_JUMP_TO_LEFT)"
+          "FREE({PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT})",
+          "FREE({PLAYER_BASE_Y_JUMP_JUMP_TO_LEFT})"
         ]
       step-2:
         to-do:
           pre-actions: []
           images: [ 1,2,3,4 ]
           to-do: [
-            "{ PLAYER_POS_X } = ({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } )",
-            "{ PLAYER_POS_Y } = ({ PLAYER_POS_Y } - { SPEED_Y_JUMP_TO_LEFT } )"
+            "UPDATE({ PLAYER_POS_X } ,({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
+            "UPDATE({ PLAYER_POS_Y } ,({ PLAYER_POS_Y } - { SPEED_Y_JUMP_TO_LEFT } ))"
           ]
           end-actions: [
-            "FREE(SPEED_X_JUMP_TO_LEFT)",
-            "FREE(SPEED_Y_JUMP_TO_LEFT)"
+            "FREE({SPEED_X_JUMP_TO_LEFT})",
+            "FREE({SPEED_Y_JUMP_TO_LEFT})"
           ]
           cond: [
             "SUPERIOR(({ POS_REFERENCE_Y } + { PLAYER_POS_Y }),{ POS_REFERENCE_Y } )"

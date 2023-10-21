@@ -10,11 +10,11 @@ description:
     type: ["{SIMPLE}"]
     touch: "{SPACE-BAR}"
     to-do: [
-      "{PLAYER_POS_Y} = ({POS_REFERENCE_Y} + {PLAYER_POS_Y} + 10)"
+      "UPDATE({PLAYER_POS_Y} ,({POS_REFERENCE_Y} + {PLAYER_POS_Y} + 10))"
     ]
   gamepad:
     type: ["{SIMPLE}"]
     touch: "{ GAMEPAD-X-TOUCH }"
     to-do: [
-      "{PLAYER_POS_Y} = ({POS_REFERENCE_Y} + { PLAYER_POS_Y } + 10)"
+      "UPDATE({PLAYER_POS_Y} ,({POS_REFERENCE_Y} + { PLAYER_POS_Y } + 10))"
     ]

@@ -18,7 +18,7 @@ description:
         ]
         images: [1,2,3]
         to-do: [
-          "{PLAYER_X_POS} = ({PLAYER_X_POS} - 2)",
+          "UPDATE({PLAYER_X_POS} ,({PLAYER_X_POS} - 2))",
           "PLAYER_BODY_ACTION(CROUCH)"
         ]
         cond: [
