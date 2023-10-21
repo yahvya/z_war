@@ -256,15 +256,16 @@ namespace Game::Player::Character::Character{
             /**
              * liste des clés d'images présentes dans la map d'image dans l'ordre pour rendre l'image tomber
              */
-            std::vector<std::string> fellImagesList;
+            std::vector<std::string> fellLeftImagesList;
+            std::vector<std::string> fellRightImagesList;
 
             /**
              *
              * @return si la liste des images tomber sont chargés
              */
             bool getFellImagesListAreLoaded() const{
-            return !this->fellImagesList.empty();
-        }
+                return !this->fellLeftImagesList.empty() && !this->fellRightImagesList.empty();
+            }
 
         // images à exécuter pour se relever
             /**

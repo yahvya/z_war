@@ -27,8 +27,9 @@ shield-points: 300
 # liste de clés des images nécessaires pour le bouclier
 shield-images: [1,2,3,4]
 
-# liste de clés des images nécessaires pour tomber
-fell-images: [1,2,3,4,5]
+# liste de clés des images nécessaires pour tomber à gauche et à droite
+fell-left-images: [1,2,3,4,5]
+fell-right-images: [1,2,3,4,5]
 
 # liste de clés des images nécessaires pour se relever
 get-up-images: [1,2,3,4]
