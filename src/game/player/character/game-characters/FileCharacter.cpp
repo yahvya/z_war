@@ -26,7 +26,7 @@ namespace Game::Player::Character::GameCharacters {
 
                     formData->imagesMap = formConfigFileContent["images"].as<std::map<std::string,std::string> >();
 
-//                    for(auto imageData : formData->imagesMap) if(!FileExists(imageData.second.c_str() ) ) throw std::runtime_error("Une des images fournis n'existe pas");
+                    for(auto imageData : formData->imagesMap) if(!FileExists(imageData.second.c_str() ) ) throw std::runtime_error("Une des images fournis n'existe pas");
 
                 // récupération du nom du personnage
                     if(!formConfigFileContent["name"]) throw std::runtime_error("Le nom du personnage est manquant dans la configuration");
@@ -61,13 +61,36 @@ namespace Game::Player::Character::GameCharacters {
                     for(auto& key : formData->shieldImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence bouclier");
 
                 // récupération des images de la séquence tomber
-                    if(!formConfigFileContent["fell-left-images"] || !formConfigFileContent["fell-right-images"]) throw std::runtime_error("La liste des clés d'images décrivant la chute manque dans la configuration");
+                    if(!formConfigFileContent["fell-images"]) throw std::runtime_error("La liste des clés d'images décrivant la chute manque dans la configuration");
 
-                    formData->fellLeftImagesList = formConfigFileContent["fell-left-images"].as<std::vector<std::string> >();
-                    formData->fellRightImagesList = formConfigFileContent["fell-right-images"].as<std::vector<std::string> >();
+                    formData->fellImagesList = formConfigFileContent["fell-images"].as<std::vector<std::string> >();
 
-                    for(auto& key : formData->fellLeftImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence chute");
-                    for(auto& key : formData->fellRightImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence chute");
+                    for(auto& key : formData->fellImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence chute");
+
+                // récupération des images de victoire
+                    if(!formConfigFileContent["victory-images"]) throw std::runtime_error("La liste des clés d'images de victoire manquent dans la configuration");
+
+                    formData->victoryImagesList = formConfigFileContent["victory-images"].as<std::vector<std::vector<std::string> > >();
+
+                    for(auto& imagesList : formData->victoryImagesList){
+                        if(imagesList.empty() ) throw std::runtime_error("La liste des images de victoire est vide");
+
+                        for(auto& key : imagesList)  if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence images de victoire");
+                    }
+
+                // récupération des images de coup pris à la tête
+                    if(!formConfigFileContent["head-hit-images"]) throw std::runtime_error("La liste des images de coup pris à la tête manque");
+
+                    formData->headHitImagesList = formConfigFileContent["head-hit-images"].as<std::vector<std::string> >();
+
+                    for(auto& key : formData->headHitImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence coup pris à la tête");
+
+                // récupération des images de coup pris au corps
+                    if(!formConfigFileContent["body-hit-images"]) throw std::runtime_error("La liste des images de coup pris au corps manque");
+
+                    formData->bodyHitImagesList = formConfigFileContent["body-hit-images"].as<std::vector<std::string> >();
+
+                    for(auto& key : formData->bodyHitImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence coup pris au corps");
 
                 // récupération de la vitesse d'attaque
                     if(!formConfigFileContent["attack-speed"]) throw std::runtime_error("La vitesse d'attaque du personnage manque dans la configuration");

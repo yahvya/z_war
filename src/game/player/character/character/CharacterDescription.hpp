@@ -256,15 +256,47 @@ namespace Game::Player::Character::Character{
             /**
              * liste des clés d'images présentes dans la map d'image dans l'ordre pour rendre l'image tomber
              */
-            std::vector<std::string> fellLeftImagesList;
-            std::vector<std::string> fellRightImagesList;
+            std::vector<std::string> fellImagesList;
 
             /**
              *
              * @return si la liste des images tomber sont chargés
              */
             bool getFellImagesListAreLoaded() const{
-                return !this->fellLeftImagesList.empty() && !this->fellRightImagesList.empty();
+                return !this->fellImagesList.empty();
+            }
+
+        // images à éxécuter coup pris à la tête
+            std::vector<std::string> headHitImagesList;
+
+            /**
+             *
+             * @return si les images à éxécuter coup pris à la tête sont chargé
+             */
+            bool getHeadHitImagesListAreLoaded() const{
+                return !this->headHitImagesList.empty();
+            }
+
+        // images à éxécuter coup pris au corps
+            std::vector<std::string> bodyHitImagesList;
+
+            /**
+             *
+             * @return si les images à éxécuter coup pris au corps
+             */
+            bool getBodyHitImagesListAreLoaded() const{
+                return !this->bodyHitImagesList.empty();
+            }
+
+        // images possibles de victoires
+            std::vector<std::vector<std::string> > victoryImagesList;
+
+            /**
+             *
+             * @return si les images de victoires sont chargé
+             */
+            bool getVictoryImagesListAreLoaded() const{
+                return !this->victoryImagesList.empty();
             }
 
         // images à exécuter pour se relever
@@ -337,7 +369,10 @@ namespace Game::Player::Character::Character{
                     this->getUpImagesListAreLoaded() &&
                     this->getShieldPointsIsLoaded() &&
                     this->getShieldImagesListAreLoaded() &&
-                    this->getAttackSpeedIsLoaded();
+                    this->getAttackSpeedIsLoaded() &&
+                    this->getHeadHitImagesListAreLoaded() &&
+                    this->getBodyHitImagesListAreLoaded() &&
+                    this->getVictoryImagesListAreLoaded();
         }
     }CharacterFormData;
 
