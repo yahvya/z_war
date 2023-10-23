@@ -10,17 +10,17 @@ description:
     sequence:
       step-1:
         pre-actions: [
-          "STORE(({ POS_REFERENCE_Y } + { PLAYER_POS_Y }),PLAYER_BASE_Y_JUMP_TO_RIGHT)",
+          "STORE(FORMULA({ POS_REFERENCE_Y } + { PLAYER_POS_Y }),PLAYER_BASE_Y_JUMP_TO_RIGHT)",
           "STORE(15,PLAYER_JUMP_HEIGHT_JUMP_TO_RIGHT)",
           "STORE(30,SPEED_X_JUMP_TO_LEFT)",
           "STORE(30,SPEED_Y_JUMP_TO_LEFT)"
         ]
         to-do: [
-          "UPDATE({ PLAYER_POS_X } ,({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
-          "UPDATE({ PLAYER_POS_Y } ,({ PLAYER_POS_Y } + { SPEED_Y_JUMP_TO_LEFT } ))"
+          "UPDATE({ PLAYER_POS_X } ,FORMULA({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
+          "UPDATE({ PLAYER_POS_Y } ,FORMULA({ PLAYER_POS_Y } + { SPEED_Y_JUMP_TO_LEFT } ))"
         ]
         cond: [
-          "SUPERIOR(({ PLAYER_BASE_Y_JUMP_TO_LEFT } + { PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT }),({ POS_REFERENCE_Y } + { PLAYER_Y_POS }))"
+          "SUPERIOR(FORMULA({ PLAYER_BASE_Y_JUMP_TO_LEFT } + { PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT }),FORMULA({ POS_REFERENCE_Y } + { PLAYER_Y_POS }) )"
         ]
         images: [ 1,2,3,4 ]
         end-actions: [
@@ -32,15 +32,15 @@ description:
           pre-actions: []
           images: [ 1,2,3,4 ]
           to-do: [
-            "UPDATE({ PLAYER_POS_X } ,({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
-            "UPDATE({ PLAYER_POS_Y } ,({ PLAYER_POS_Y } - { SPEED_Y_JUMP_TO_LEFT } ))"
+            "UPDATE({ PLAYER_POS_X } ,FORMULA({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
+            "UPDATE({ PLAYER_POS_Y } ,FORMULA({ PLAYER_POS_Y } - { SPEED_Y_JUMP_TO_LEFT } ))"
           ]
           end-actions: [
             "FREE({SPEED_X_JUMP_TO_LEFT})",
             "FREE({SPEED_Y_JUMP_TO_LEFT})"
           ]
           cond: [
-            "SUPERIOR(({ POS_REFERENCE_Y } + { PLAYER_POS_Y }),{ POS_REFERENCE_Y } )"
+            "SUPERIOR(FORMULA({ POS_REFERENCE_Y } + { PLAYER_POS_Y }),{ POS_REFERENCE_Y } )"
           ]
   gamepad:
     type: [ "{ SIMPLE }","{ SEQUENCE-REFERENCE }","{ CONDITION }" ]

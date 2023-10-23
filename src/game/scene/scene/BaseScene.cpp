@@ -50,6 +50,7 @@ namespace Game::Scene::Scene {
         int gameFpsConfig = this->linkedGame->getResourcesManager()->getGameGlobalResources()->fps;
 
         SetTargetFPS(gameFpsConfig <= BaseScene::MAX_FPS && gameFpsConfig >= BaseScene::MIN_FPS ? gameFpsConfig : BaseScene::DEFAULT_FPS);
+        SetTargetFPS(10);
 
         return this;
     }
