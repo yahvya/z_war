@@ -19,11 +19,18 @@ namespace Game::Player::Character::GameCharacters {
             /**
              *
              * @param linkedGame jeux lié
-             * @param characterDirname nom du dossier du personnage
+             * @param characterDirname chemin du dossier du personnage
              */
-            explicit FileCharacter(Core::Game* linkedGame,std::string characterDirname);
+            explicit FileCharacter(Core::Game* linkedGame,std::string dirPath);
 
             bool loadAnimationDatas() noexcept override;
+
+            /**
+             * gère les variables pouvant être géré au chargement de l'action
+             * @param action l'action à gérer
+             * @return si l'action réussi
+             */
+            bool manageActionVars(CharacterAction* action) noexcept;
 
             /**
              * charge le formulaire donnée
@@ -53,9 +60,9 @@ namespace Game::Player::Character::GameCharacters {
 
         private:
             /**
-             * nom du dossier du personnage
+             * chemin du dossier du personnage
              */
-            std::string characterDirname;
+            std::string dirPath;
     };
 }
 

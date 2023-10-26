@@ -3,12 +3,13 @@
 //
 
 #include "TextUtils.hpp"
+#include <sstream>
 
-#include <iostream>
 namespace Game::Utils{
     // définition des constantes
     const boost::regex TextUtils::varsMatcher = boost::regex("\\{([^\\{\\}]+)\\}");
     const boost::regex TextUtils::normalizedVarsMatcher = boost::regex("\\{([^\\{\\}]+)\\}");
+    const boost::regex TextUtils::functionsMatcher = boost::regex("([A-Za-z][A-Za-z0-9_-]*)\\(([^\\;]+)\\)");
 
     std::vector<std::string> TextUtils::extractVarsIn(std::string toParse,bool isNormalized) noexcept{
         std::vector<std::string> results{};
@@ -29,13 +30,74 @@ namespace Game::Utils{
         return results;
     }
 
-    std::vector<TextUtils::FunctionData> TextUtils::extractFunctionDatas(std::map<std::string,std::any> variablesMap,std::string toParse,bool keepVariables) noexcept{
+    std::vector<TextUtils::FunctionData> TextUtils::extractFunctionDatas(std::map<std::string,std::string> variablesMap,std::string toParse,bool keepVariables) noexcept{
+        toParse = TextUtils::trim(TextUtils::normalizeVarNamesIn(toParse) );
+
         std::vector<TextUtils::FunctionData> results{};
+
+        try {
+            boost::smatch matches;
+
+            // récupération des fonctions niveau 1
+            while(boost::regex_search(toParse,matches,TextUtils::functionsMatcher) ){
+                const auto functionName = TextUtils::trim(matches[1].str() );
+                const auto paramsListStr = TextUtils::trim(matches[2].str() );
+
+                std::vector<ParamsType> paramsDatas{};
+
+                // traitement des paramètres
+                    auto params = TextUtils::split(paramsListStr,',');
+
+                    for(auto paramStr : params){
+                        ParamsType paramType;
+
+                        if(boost::regex_match(paramStr.begin(),paramStr.end(),TextUtils::functionsMatcher) ){
+                            // alors type fonction
+                            paramType.data = TextUtils::extractFunctionDatas(variablesMap,paramStr,keepVariables).front();
+                            paramType.type = ParamsType::FUNCTION;
+                        }
+                        else if(boost::regex_search(paramStr.begin(),paramStr.end(),TextUtils::varsMatcher) ){
+                            // alors contient une ou des variable
+                            paramType.data = !keepVariables ? TextUtils::replaceVars(paramStr,variablesMap) : paramStr;
+                            paramType.type = ParamsType::VARIABLE_IN;
+                        }
+                        else{
+                            // alors
+                            paramType.data = paramStr;
+                            paramType.type = ParamsType::STATIC_TYPE;
+                        }
+
+                        paramsDatas.push_back(paramType);
+                    }
+
+                toParse = matches.suffix().str();
+
+                results.push_back({functionName,paramsDatas});
+            }
+        }
+        catch(std::exception& e){
+            TraceLog(LOG_ERROR,"Echec d'extraction des données de fonction");
+            TraceLog(LOG_ERROR,e.what());
+        }
 
         return results;
     }
 
+    std::string TextUtils::replaceVars(std::string str,std::map<std::string,std::string> variablesMap) noexcept{
+        const auto variablesList = TextUtils::extractVarsIn(str,true);
+
+        for(auto& variableName : variablesList){
+            if(!variablesMap.contains(variableName) ) continue;
+
+            str = TextUtils::replaceString(str,"{" + variableName + "}",variablesMap.find(variableName)->second);
+        }
+
+        return str;
+    }
+
     std::string TextUtils::normalizeVarNamesIn(std::string toParse){
+        TraceLog(LOG_INFO,"Normalisation des variables");
+
         boost::smatch matches;
 
         std::string subStr = toParse;
@@ -64,6 +126,8 @@ namespace Game::Utils{
     }
 
     std::string TextUtils::replaceString(std::string str,std::string search,std::string replaceString) noexcept{
+        TraceLog(LOG_INFO,"Remplacement de chaine");
+
         const auto toReplaceLen = search.length();
         const auto replaceLen = replaceString.length();
 
@@ -90,5 +154,16 @@ namespace Game::Utils{
         std::transform(str.begin(),str.end(),str.begin(),toApply);
 
         return str;
+    }
+
+    std::vector<std::string> TextUtils::split(std::string toSplit,char delimiter) noexcept{
+        std::stringstream stream(toSplit);
+        std::string part;
+
+        std::vector<std::string> results{};
+
+        while(std::getline(stream,part,delimiter) ) results.push_back(part);
+
+        return results;
     }
 }

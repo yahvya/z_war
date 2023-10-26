@@ -22,7 +22,7 @@ description:
         cond: [
           "SUPERIOR(FORMULA({ PLAYER_BASE_Y_JUMP_TO_LEFT } + { PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT }),FORMULA({ POS_REFERENCE_Y } + { PLAYER_Y_POS }) )"
         ]
-        images: [ 1,2,3,4 ]
+        images: []
         end-actions: [
           "FREE({PLAYER_JUMP_HEIGHT_JUMP_TO_LEFT})",
           "FREE({PLAYER_BASE_Y_JUMP_JUMP_TO_LEFT})"
@@ -30,7 +30,7 @@ description:
       step-2:
         to-do:
           pre-actions: []
-          images: [ 1,2,3,4 ]
+          images: []
           to-do: [
             "UPDATE({ PLAYER_POS_X } ,FORMULA({ PLAYER_POS_X } - { SPEED_X_JUMP_TO_LEFT } ))",
             "UPDATE({ PLAYER_POS_Y } ,FORMULA({ PLAYER_POS_Y } - { SPEED_Y_JUMP_TO_LEFT } ))"

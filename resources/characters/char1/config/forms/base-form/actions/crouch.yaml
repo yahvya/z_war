@@ -5,7 +5,7 @@ action: "CROUCH"
 description:
   type: "{REPEATABLE}"
   count-of-repeat: "{INFINITE}"
-  images: [1,2,3]
+  images: []
   keyboard:
     type: ["{SIMPLE}"]
     touch: "{ARROW-DOWN}"

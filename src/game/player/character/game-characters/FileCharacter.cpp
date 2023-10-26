@@ -4,20 +4,26 @@
 
 #include <cstring>
 #include <filesystem>
+#include <map>
 #include "FileCharacter.hpp"
+#include "../../../utils/TextUtils.hpp"
+#include "../character/CharacterDescription.hpp"
+
+using namespace Game::Utils;
+using namespace Game::Player::Character::Character;
 
 #include <iostream>
 namespace Game::Player::Character::GameCharacters {
-    FileCharacter::FileCharacter(Core::Game *linkedGame,std::string characterDirname) : Character::Character(linkedGame),characterDirname( characterDirname) {}
+    FileCharacter::FileCharacter(Core::Game *linkedGame,std::string dirPath) : Character::Character(linkedGame), dirPath(dirPath) {}
 
     bool FileCharacter::loadForm(std::string formName,std::string formConfigFilePath) noexcept{
-        TraceLog(LOG_INFO,"Chargement d'une forme");
+        TraceLog(LOG_INFO,"Chargement d'une forme de personnage");
 
         if(this->characterDatas->getCharacterFormIsLoaded(formName) ) return true;
 
         try{
-            // récupération des données du formulaire
-                auto formConfigFileContent = YAML::LoadFile(this->characterDirname + formConfigFilePath);
+            // récupération des données de la forme du personnage
+                auto formConfigFileContent = YAML::LoadFile(this->dirPath + formConfigFilePath);
 
                 auto formData = new CharacterFormData();
 
@@ -26,7 +32,7 @@ namespace Game::Player::Character::GameCharacters {
 
                     formData->imagesMap = formConfigFileContent["images"].as<std::map<std::string,std::string> >();
 
-                    for(auto imageData : formData->imagesMap) if(!FileExists(imageData.second.c_str() ) ) throw std::runtime_error("Une des images fournis n'existe pas");
+                    for(auto imageData : formData->imagesMap) if(!FileExists((this->dirPath + imageData.second ).c_str() ) ) throw std::runtime_error("Une des images fournis n'existe pas");
 
                 // récupération du nom du personnage
                     if(!formConfigFileContent["name"]) throw std::runtime_error("Le nom du personnage est manquant dans la configuration");
@@ -39,9 +45,12 @@ namespace Game::Player::Character::GameCharacters {
                     formData->requiredEnergy = formConfigFileContent["energy"].as<float>();
 
                 // récupération de la durée de la forme
-                    if(!formConfigFileContent["duration"]) throw std::runtime_error("La durée de la forme est manquant dans la configuration");
-                    // en attente de récupération de variable
-                    formData->duration = 10;
+                    if(!formConfigFileContent["duration"]) throw std::runtime_error("La durée de la forme est manquante dans la configuration");
+
+                    formData->duration = std::stof(TextUtils::replaceVars(
+                        TextUtils::normalizeVarNamesIn(formConfigFileContent["duration"].as<std::string>() ),
+                        DURATION_VAR
+                    ));
 
                 // récupération de la formule de calcul combo
                     if(!formConfigFileContent["combo-gain-formula"]) throw std::runtime_error("La formule de calcul du combo manque dans la configuration");
@@ -105,10 +114,22 @@ namespace Game::Player::Character::GameCharacters {
                     for(auto& key : formData->getUpImagesList) if(!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence chute");
 
                 // récupération des actions
-//                    formData->actionsMap["test"] = new CharacterAction();
-//                    formData->actionsMap["test"]->actionDescription = "t'et";
-//                    formData->actionsMap["test"]->actionName = "encore";
-//                    formData->actionsMap["test"]->actionDescriptionFilePath = "beinbe";
+                    if(!formConfigFileContent["actions-map"]) throw std::runtime_error("Il manque la map des actions");
+
+                    auto actionsMap = formConfigFileContent["actions-map"].as<std::map<std::string,std::string> >();
+
+                    for(auto& [actionName,configFilePath] : actionsMap){
+                        auto action = new CharacterAction();
+
+                        action->actionName = actionName;
+                        action->actionDescriptionFilePath = configFilePath;
+                        action->actionDescription = YAML::LoadFile(this->dirPath + action->actionDescriptionFilePath);
+
+                        // traitement des données de l'action
+                        if(!this->manageActionVars(action) ) throw std::runtime_error("Echec de la gestion de l'action");
+
+                        formData->actionsMap[action->actionName] = action;
+                    }
 
             this->characterDatas->characterFormsMap[formName] = formData;
 
@@ -116,6 +137,22 @@ namespace Game::Player::Character::GameCharacters {
         }
         catch(std::exception& e){
             TraceLog(LOG_ERROR,"Echec de chargement de la forme");
+            TraceLog(LOG_ERROR,e.what() );
+        }
+
+        return false;
+    }
+
+    bool FileCharacter::manageActionVars(CharacterAction* action) noexcept{
+        TraceLog(LOG_INFO,"Gestion des données d'une action");
+
+        try{
+
+
+            return true;
+        }
+        catch(std::exception& e){
+            TraceLog(LOG_ERROR,"Echec de gestion des données d'une action");
             TraceLog(LOG_ERROR,e.what() );
         }
 
@@ -140,7 +177,7 @@ namespace Game::Player::Character::GameCharacters {
                     if(!this->characterDatas->getCharacterFormsAreLoaded() ) keysToLoad.push_back("forms");
 
                 auto configDatas = FileCharacter::partialLoadFrom(
-                    this->characterDirname + "/config/config.yaml",
+                        this->dirPath + "/config/config.yaml",
                     keysToLoad
                 );
 

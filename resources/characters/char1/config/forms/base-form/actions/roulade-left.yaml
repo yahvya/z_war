@@ -4,7 +4,7 @@
 action: "ROULADE_LEFT"
 description:
   type: "{SIMPLE}"
-  images: [4,3,2,1]
+  images: []
   keyboard:
     type: ["{COMBINED-TOUCH}","{SEQUENCE}"]
     touch: ["{ARROW-LEFT}","{ARROW-DOWN}"]
@@ -16,7 +16,7 @@ description:
         end-actions: [
           "FREE(PLAYER_DST_X_POS_ROULADE_LEFT)"
         ]
-        images: [1,2,3]
+        images: []
         to-do: [
           "UPDATE({PLAYER_X_POS} ,FORMULA({PLAYER_X_POS} - 2))",
           "PLAYER_BODY_ACTION(CROUCH)"

@@ -1,4 +1,4 @@
-# tout chemin commence à la base du dossier (char1)
+# tout chemin commence à la base du dossier (char1) et par un /
 
 # liste des controllers configurés (même pour toutes les formes du personnage)
 controllers: ["keyboard","gamepad"]
@@ -10,7 +10,7 @@ forms:
     path: "/config/forms/base-form/config.yaml"
 
 # chemin de poster du personnage
-presentation-image-path: "sprites/"
+presentation-image-path: "/sprites/"
 
 # configuration de l'animation de présentation du personnage
 presentation-animation:

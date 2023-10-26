@@ -4,13 +4,13 @@
 action: "GO_RIGHT"
 description:
   type: "{SIMPLE}"
-  images: [1,2,1]
+  images: []
   touch-config:
     keyboard:
       type: ["{SIMPLE}"]
       touch: "{ARROW-LEFT}"
       to-do: [
-        "UPDATE({PLAYER_POS_X} ,FORMULA(({PLAYER_POS_X} - 10)) )"
+        "UPDATE({PLAYER_POS_X},FORMULA({PLAYER_POS_X} - 10) )"
       ]
     gamepad:
       type: ["{ CONDITION }"]

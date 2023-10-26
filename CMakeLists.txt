@@ -8,7 +8,7 @@ project(z_war)
 
 #recherche raylib des packages (raylib)
 find_package(raylib CONFIG REQUIRED)
-
+find_package(Boost REQUIRED COMPONENTS regex)
 
 # ajout de raylib gui
 find_path(RAYGUI_INCLUDE_DIRS "raygui.h")
@@ -53,13 +53,15 @@ add_executable(z_war src/main.cpp
 
 # ajout de yaml-cpp
 add_subdirectory(libs/yaml-cpp)
-include_directories(libs/yaml-cpp/include ${RAYGUI_INCLUDE_DIRS})
+include_directories(libs/yaml-cpp/include ${RAYGUI_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 # ajout des librairies
 target_link_libraries(${PROJECT_NAME}
         raylib
         yaml-cpp
+        ${Boost_LIBRARIES}
 )
+
 
 #copie du dossier ressources
 add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources)

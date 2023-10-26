@@ -6,3 +6,5 @@ variables à définir pour la partie:
 
 ATTACK_SPEED
 COUNT_OF_HITS pour un compo
+
+muParser

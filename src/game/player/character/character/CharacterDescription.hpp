@@ -15,80 +15,80 @@ namespace Game::Player::Character::Character{
     /**
      * variables de durée
      */
-    const std::map<std::string,int> DURATION_VAR = {
-        {"INFINITE",-1}
+    const std::map<std::string,std::string> DURATION_VAR = {
+        {"INFINITE","-1"}
     };
 
     /**
      * variables de type de description
      */
-    const std::map<std::string,int> DESCRIPTION_TYPE_VAR = {
+    const std::map<std::string,std::string> DESCRIPTION_TYPE_VAR = {
         /**
          * action pouvant être répété
          */
-        {"REPEATABLE",2},
+        {"REPEATABLE","2"},
     };
 
     /**
      * variables de type de description de controlleurs
      */
-    const std::map<std::string,int> CONTROLLER_TYPE_VAR = {
+    const std::map<std::string,std::string> CONTROLLER_TYPE_VAR = {
         /**
          * touche simple
          */
-        {"SIMPLE",1},
+        {"SIMPLE","1"},
         /**
          * condition posé sur l'action
          */
-        {"CONDITION",2},
+        {"CONDITION","2"},
         /**
          * plusieurs touches mapé
          */
-        {"COMBINED-TOUCH",3},
+        {"COMBINED-TOUCH","3"},
         /**
          * action séquentiel
          */
-        {"SEQUENCE",4},
+        {"SEQUENCE","4"},
         /**
          * référence sur une séquance défini ailleurs
          */
-        {"SEQUENCE-REFERENCE",5}
+        {"SEQUENCE-REFERENCE","5"}
     };
 
     /**
      * variables de mappage des touches clavier
      */
-    const std::map<std::string,int> KEYBOARD_TOUCH_MAP_VAR = {
+    const std::map<std::string,std::string> KEYBOARD_TOUCH_MAP_VAR = {
         /**
          * flèche basse clavier
          */
-        {"ARROW-DOWN",KeyboardKey::KEY_DOWN},
+        {"ARROW-DOWN",std::to_string(KeyboardKey::KEY_DOWN)},
         /**
          * flèche gauche clavier
          */
-        {"ARROW-LEFT",KeyboardKey::KEY_LEFT},
+        {"ARROW-LEFT",std::to_string(KeyboardKey::KEY_LEFT)},
         /**
          * flèche droite clavier
          */
-        {"ARROW-RIGHT",KeyboardKey::KEY_RIGHT},
+        {"ARROW-RIGHT",std::to_string(KeyboardKey::KEY_RIGHT)},
         /**
          * flèche haute clavier
          */
-        {"ARROW-UP",KeyboardKey::KEY_UP},
+        {"ARROW-UP",std::to_string(KeyboardKey::KEY_UP)},
         /**
          * touche espace
          */
-        {"SPACE-BAR",KeyboardKey::KEY_SPACE},
+        {"SPACE-BAR",std::to_string(KeyboardKey::KEY_SPACE)},
     };
 
     /**
      * variables de mappage des touches manettes
      */
-    const std::map<std::string,int> GAMEPAD_TOUCH_MAP_VAR = {
+    const std::map<std::string,std::string> GAMEPAD_TOUCH_MAP_VAR = {
         /**
          * touche x manettes ps3
          */
-        {"GAMEPAD-X-TOUCH",GamepadButton::GAMEPAD_BUTTON_RIGHT_FACE_DOWN}
+        {"GAMEPAD-X-TOUCH",std::to_string(GamepadButton::GAMEPAD_BUTTON_RIGHT_FACE_DOWN)}
     };
 
     /**

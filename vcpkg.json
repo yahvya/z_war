@@ -8,5 +8,8 @@
   }, {
     "name" : "raygui",
     "version>=" : "4.0"
+  }, {
+    "name" : "boost-regex",
+    "version>=" : "1.83.0"
   } ]
 }

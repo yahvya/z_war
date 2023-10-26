@@ -9,7 +9,7 @@
 #include "boost/regex.hpp"
 #include <vector>
 #include <string>
-#include <any>
+#include <variant>
 #include <map>
 
 namespace Game::Utils{
@@ -25,9 +25,9 @@ namespace Game::Utils{
                 public:
                     typedef enum ParamSpecificType{
                         /**
-                         * nom d'une variable comme donnée
+                         * chaine contenant le nom de variable au format normalisé + d'autres élements si keepVariables vaux true sinon chaine contenant des variables remplacés si elles existaient
                          */
-                        VARIABLE = 1,
+                        VARIABLE_IN = 1,
 
                         /**
                          * type c++
@@ -41,12 +41,13 @@ namespace Game::Utils{
                     }ParamSpecificType;
 
                     /**
-                     * donnée du paramètre
+                     * données du paramètre
                      */
-                    std::any data;
+                    std::variant<std::string,std::pair<std::string,std::vector<ParamsType> > > data;
 
                     /**
-                     * type de la donnée
+                     * type de données contenu
+                     * std::string ou FunctionData
                      */
                     ParamSpecificType type;
             }ParamsType;
@@ -67,12 +68,14 @@ namespace Game::Utils{
 
             /**
              * traite une chaine contenant une ou plusieurs fonctions
-             * @param variablesMap map des variables , key nom de la variable , value valeur de la variable
+             * @attention si une variable trouvé n'existe pas dans la liste fournie alors elle reste sous forme de variable
+             * @attention si plusieurs fonctions fournies alors séparé avec ;
+             * @param variablesMap map des variables , key nom de la variable , value valeur de la variable, peut être vide si keepVariables = true
              * @param toParse la chaine à traiter
              * @param keepVariables si false alors les variables sont remplacés par leurs valeurs dans le traitement (sauf si nullptr est associé comme valeur à la variable) sinon si true alors les variables sont conservés par nom
              * @return les données de fonctions
              */
-            static std::vector<FunctionData> extractFunctionDatas(std::map<std::string,std::any> variablesMap,std::string toParse,bool keepVariables = false) noexcept;
+            static std::vector<FunctionData> extractFunctionDatas(std::map<std::string,std::string> variablesMap,std::string toParse,bool keepVariables = false) noexcept;
 
             /**
              * normalise le nom des variables au format
@@ -107,6 +110,22 @@ namespace Game::Utils{
              */
             static std::string changeCase(std::string str,bool lower) noexcept;
 
+            /**
+             * coupe une chaine en plusieurs
+             * @param toSplit la chaine à séparer
+             * @param delimiter le délimiteur
+             * @return la liste des parties de la chaine
+             */
+            static std::vector<std::string> split(std::string toSplit,char delimiter) noexcept;
+
+            /**
+             * remplace les variables dans la chaine par la valeur donnée
+             * @param str la chaine à parser (chaine normalisé attendue)
+             * @param variablesMap la map des variables key nom de la variable value valeur de la variable si nullptr comme value ou variable non trouvé variable laissé dans la chaine
+             * @return la chaine modifié
+             */
+            static std::string replaceVars(std::string str,std::map<std::string,std::string> variablesMap) noexcept;
+
         public:
             /**
              * regex permettant de matcher les variables
@@ -117,6 +136,11 @@ namespace Game::Utils{
              * regex permettant de matcher les variables déjà normalisés
              */
             static const boost::regex normalizedVarsMatcher;
+
+            /**
+             * regex permettant de matcher les fonctions
+             */
+            static const boost::regex functionsMatcher;
     };
 }
 

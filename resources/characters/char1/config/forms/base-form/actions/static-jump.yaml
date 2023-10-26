@@ -5,7 +5,7 @@ action: "STATIC_JUMP"
 description:
   type: "{REPEATABLE}"
   count-of-repeat: 3
-  images: [1,2,3]
+  images: []
   keyboard:
     type: ["{SIMPLE}"]
     touch: "{SPACE-BAR}"

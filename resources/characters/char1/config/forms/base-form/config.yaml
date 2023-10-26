@@ -1,10 +1,5 @@
 # liste des images du personnage
-images:
-  1 : "images/1.ong "
-  2 : "images/1.ong"
-  3: "images"
-  4: "encore"
-  5: "test"
+images: {}
 
 # nom de base du personnage
 name: Nom du personnage
@@ -25,10 +20,10 @@ combo-gain-formula: "{COUNT_OF_HITS} * {ATTACK_SPEED}"
 shield-points: 300
 
 # liste de clés des images nécessaires pour le bouclier
-shield-images: [1,2,3,4]
+shield-images: []
 
 # liste de clés des images nécessaires pour tomber
-fell-images: [1,2,3,4,5]
+fell-images: []
 
 # liste des images de victoire
 victory-images: [
@@ -43,15 +38,15 @@ head-hit-images: []
 body-hit-images: []
 
 # liste de clés des images nécessaires pour se relever
-get-up-images: [1,2,3,4]
+get-up-images: []
 
 # liste des actions du personnages (permet le chargement partiel)
 actions-map:
-  crouch : "forms/base-form/actions/crouch.yaml"
-  go-left: "forms/base-form/actions/go-left.yaml"
-  go-right: "forms/base-form/actions/go-right.yaml"
-  jump-to-left: "forms/base-form/actions/jump-to-left.yaml"
-  jump-to-right : "forms/base-form/actions/jump-to-right.yaml"
-  roulade-left : "forms/base-form/actions/roulade-left.yaml"
-  roulade-right : "forms/base-form/actions/roulade-right.yaml"
-  static-jump: "forms/base-form/actions/static-jump.yaml"
+  crouch : "/config/forms/base-form/actions/crouch.yaml"
+  go-left: "/config/forms/base-form/actions/go-left.yaml"
+  go-right: "/config/forms/base-form/actions/go-right.yaml"
+  jump-to-left: "/config/forms/base-form/actions/jump-to-left.yaml"
+  jump-to-right : "/config/forms/base-form/actions/jump-to-right.yaml"
+  roulade-left : "/config/forms/base-form/actions/roulade-left.yaml"
+  roulade-right : "/config/forms/base-form/actions/roulade-right.yaml"
+  static-jump: "/config/forms/base-form/actions/static-jump.yaml"

@@ -4,17 +4,17 @@
 action: "GO_LEFT"
 description:
   type: "{SIMPLE}"
-  images: [1,2,1]
+  images: []
   touch-config:
     keyboard:
       type: ["{SIMPLE}"]
-      touch: "{ARROW-LEFT}"}
+      touch: "{ARROW-LEFT}"
       to-do: [
-        "UPDATE({PLAYER_POS_X},FORMULA({PLAYER_POS_X} - 10)"
+        "UPDATE({PLAYER_POS_X},FORMULA({PLAYER_POS_X} - 10) )"
       ]
     gamepad:
       type: ["{ CONDITION }"]
       cond: ["INFERIOR({GAMEPAD_AXIS_LEFT_X},-0.3)"]
       to-do: [
-        "UPDATE({PLAYER_POS_X},FORMULA({PLAYER_POS_X} - (({GAMEPAD_AXIS_LEFT_X} * -1) * 10) )"
+        "UPDATE({PLAYER_POS_X},FORMULA({PLAYER_POS_X} - (({GAMEPAD_AXIS_LEFT_X} * -1) * 10) ) )"
       ]
