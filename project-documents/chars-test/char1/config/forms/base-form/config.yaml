@@ -1,5 +1,8 @@
 # liste des images du personnage
-images: {}
+images:
+  1:
+    path: "chemin/"
+    contentConfig:
 
 # nom de base du personnage
 name: Nom du personnage

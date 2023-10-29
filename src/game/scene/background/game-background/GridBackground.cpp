@@ -42,9 +42,9 @@ namespace Game::Scene::Background::GameBackground{
 
             // calcul du nombre de ligne nécessaires pour les petits carré
                 // remplissage décalé de la page sur la largeur
-                auto countOfWidthLines = std::floor(container.width / this->squareSize) + 1;
+                int countOfWidthLines = std::floor(container.width / this->squareSize) + 1;
                 // remplissage de la page sur la hauteur
-                auto countOfHeightLines = std::floor(containerCopy.height / this->squareSize) + 1;
+                int countOfHeightLines = std::floor(containerCopy.height / this->squareSize) + 1;
 
             // calcul de taille des petits carrés et définition du conteneur descriptif
                 auto littleDrawSize = this->squareSize / 2;

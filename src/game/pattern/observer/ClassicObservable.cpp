@@ -30,12 +30,14 @@ namespace Game::Pattern::Observer {
     ClassicObservable* ClassicObservable::notifyObservers(int methodId,std::any datas) noexcept{
         try {
             // vérification d'existante de l'évenement
-                if (!this->observersMap.contains(methodId) ) return this;
+            if (!this->observersMap.contains(methodId) ) return this;
 
             // recherche et notificaiton de la liste des observateurs
+            {
                 auto observerDatasList = this->observersMap.find(methodId)->second;
 
-                for(auto observerData : observerDatasList) observerData->notificationExecutor(this,datas);
+                for (auto observerData: observerDatasList) observerData->notificationExecutor(this, datas);
+            }
         }
         catch(std::exception& e){
             TraceLog(LOG_ERROR,"Echec de notification des observers");
@@ -61,12 +63,13 @@ namespace Game::Pattern::Observer {
             auto observersList = this->observersMap.find(methodId)->second;
 
             // suppression des élements de la liste
-                observersList.remove_if([&observers](ObserverDatasContainer* observerData){
-                    return std::find(observers.begin(),observers.end(),observerData->observer) != observers.end();
+            {
+                observersList.remove_if([&observers](ObserverDatasContainer *observerData) {
+                    return std::find(observers.begin(), observers.end(), observerData->observer) != observers.end();
                 });
-
+            }
             // mise à jour de la liste
-                this->observersMap.at(methodId) = observersList;
+            this->observersMap.at(methodId) = observersList;
         }
         catch(std::exception& e){
             TraceLog(LOG_ERROR,"Echec de suppression d'observable");

@@ -132,7 +132,7 @@ namespace Game::Player::Character::Character{
         std::string formName;
 
         /**
-         * nom des actions dans requises pour l'animation
+         * nom des actions requises pour l'animation
          */
         std::vector<std::string> requiredActions;
 
@@ -141,6 +141,26 @@ namespace Game::Player::Character::Character{
          */
         std::vector<std::string> animationList;
     }PresentationAnimationData;
+
+    /**
+     * configuration d'une image
+     */
+    typedef struct ImageConfig{
+        /**
+         * chemin de l'image
+         */
+        std::string path;
+
+        /**
+         * largeur de l'image
+         */
+        float width;
+
+        /**
+         * hauteur de l'image
+         */
+        float height;
+    }ImageConfig;
 
     /**
      * données d'une forme du jeux
@@ -152,7 +172,7 @@ namespace Game::Player::Character::Character{
              * @key clé lié à l'image
              * @value chemin complet de l'image
              */
-            std::map<std::string,std::string> imagesMap;
+            std::map<std::string,ImageConfig> imagesMap;
 
             /**
              *

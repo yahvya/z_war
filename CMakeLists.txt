@@ -49,6 +49,8 @@ add_executable(z_war src/main.cpp
         src/game/utils/FileUtils.hpp
         src/game/player/character/character/CharacterDescription.hpp
         src/game/player/character/character/CharacterActionDescription.hpp
+        src/game/functions/functions/GameFunction.cpp
+        src/game/functions/functions/GameFunction.hpp
 )
 
 # ajout de yaml-cpp
@@ -62,9 +64,14 @@ target_link_libraries(${PROJECT_NAME}
         ${Boost_LIBRARIES}
 )
 
-
 #copie du dossier ressources
-add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
+)
 
 # copie du fichier de configuration de base
-add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/app.yaml $<TARGET_FILE_DIR:${PROJECT_NAME}>/app.yaml)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_SOURCE_DIR}/app.yaml $<TARGET_FILE_DIR:${PROJECT_NAME}>/app.yaml
+)

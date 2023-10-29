@@ -7,12 +7,13 @@ int main() {
         auto game = new Game::Core::Game();
 
         if (!game->launch() ) {
-            std::wcerr << "(Echec de lancement de la partie)" << std::endl;
+            TraceLog(LOG_ERROR,"(Echec de lancement de la partie)");
 
             return EXIT_FAILURE;
         }
     }
     catch (std::exception&){
+        TraceLog(LOG_ERROR,"(Une erreur interne s'est prosuite)");
         std::wcerr << "(Une erreur interne s'est produite)" << std::endl;
 
         return EXIT_FAILURE;
