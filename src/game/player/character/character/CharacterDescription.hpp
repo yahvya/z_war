@@ -359,20 +359,6 @@ namespace Game::Player::Character::Character{
             bool getActionIsLoaded(std::string actionName){
             return this->actionsMap.contains(actionName) && this->actionsMap[actionName]->getActionIsLoaded();
         }
-
-        // vitesse d'attaque du personnage
-            /**
-             * vitesse d'attaque du personnage
-             */
-            float attackSpeed = -1.f;
-
-            /**
-             *
-             * @return si la vitesse d'attaque est chargé
-             */
-            bool getAttackSpeedIsLoaded() const{
-                return this->attackSpeed;
-            }
         /**
          *
          * @return si la forme est chargé
@@ -389,7 +375,6 @@ namespace Game::Player::Character::Character{
                     this->getUpImagesListAreLoaded() &&
                     this->getShieldPointsIsLoaded() &&
                     this->getShieldImagesListAreLoaded() &&
-                    this->getAttackSpeedIsLoaded() &&
                     this->getHeadHitImagesListAreLoaded() &&
                     this->getBodyHitImagesListAreLoaded() &&
                     this->getVictoryImagesListAreLoaded();

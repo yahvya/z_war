@@ -1,8 +1,23 @@
 # liste des images du personnage
 images:
-  1:
-    path: "chemin/"
+  position-debout:
+    path: "/chemin/image-debout.png"
     contentConfig:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+      - x: 300
+        y: 0
+        width: 200
+        height: 100
+  marche:
+    path: "/chemin/image-marche.png"
+    contentConfig:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
 
 # nom de base du personnage
 name: Nom du personnage
@@ -12,9 +27,6 @@ energy: 0
 
 # durée de la forme
 duration: "{INFINITE}"
-
-# vitesse d'attaque
-attack-speed: 200
 
 # formule de calcul du nombre de points donné par un combo
 combo-gain-formula: "{COUNT_OF_HITS} * {ATTACK_SPEED}"
@@ -30,8 +42,9 @@ fell-images: []
 
 # liste des images de victoire
 victory-images: [
-  [],
-  []
+  ["victoire_image"],
+  ["victoire_image_bleue_1","victoire_image_blue_2"],
+  ["victoire_image_rouge"]
 ]
 
 # images coup pris à la tête
