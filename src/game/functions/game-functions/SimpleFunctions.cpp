@@ -7,7 +7,7 @@
 
 namespace Game::Functions::GameFunctions{
     bool sayHello(GameFunction::FunctionData,GameFunction::FunctionRequiredGlobalData,std::vector<GameFunction::FunctionData>*){
-
+        return true;
     }
 
     void SimpleFunctions::registerFunctions(){
