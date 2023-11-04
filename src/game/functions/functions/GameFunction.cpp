@@ -4,6 +4,7 @@
 
 #include "GameFunction.hpp"
 #include "../../utils/TextUtils.hpp"
+#include "../game-functions/SimpleFunctions.hpp"
 
 using namespace Game::Utils;
 
@@ -12,6 +13,11 @@ namespace Game::Functions::Functions {
     const boost::regex GameFunction::varsMatcher = boost::regex("\\{([^\\{\\}]+)\\}");
     const boost::regex GameFunction::normalizedVarsMatcher = boost::regex("\\{([^\\{\\}]+)\\}");
     const boost::regex GameFunction::functionsMatcher = boost::regex("([A-Za-z][A-Za-z0-9_-]*)\\(([^\\;]+)\\)");
+
+    // définition de la liste des fonctions
+    std::map<std::string,GameFunction::FunctionMarker> GameFunction::gameFunctionsMap{};
+
+    std::map<std::string,std::string> GameFunction::functionsNameMap{};
 
     std::vector<std::string> GameFunction::extractVarsIn(std::string toParse,bool isNormalized) noexcept{
         std::vector<std::string> results{};
@@ -126,5 +132,33 @@ namespace Game::Functions::Functions {
         }
 
         return toParse;
+    }
+
+    bool GameFunction::execFunctionsList(std::vector<GameFunction::FunctionData> functions) noexcept{
+
+        return true;
+    }
+
+    bool GameFunction::config(ResourcesManager* manager) noexcept{
+        TraceLog(LOG_INFO,"Chargement de la configuration de nommage des fonctions");
+
+        try{
+            // chargement du mapage des noms
+            GameFunction::functionsNameMap = YAML::LoadFile(std::string(manager->getGameGlobalResources()->resourcesDirPath) + ResourcesManager::CONFIG_DIR_PATH  + "functions/config.yaml").as<std::map<std::string,std::string> >();
+
+            GameFunction::registerFunctions();
+
+            return true;
+        }
+        catch(std::exception& e){
+            TraceLog(LOG_ERROR,"Echec de chargement de la configuration de nommage des fonctions");
+            TraceLog(LOG_ERROR,e.what() );
+
+            return false;
+        }
+    }
+
+    void GameFunction::registerFunctions(){
+        GameFunctions::SimpleFunctions::registerFunctions();
     }
 }

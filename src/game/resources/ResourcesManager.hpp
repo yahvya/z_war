@@ -172,7 +172,7 @@ namespace Game::Resource {
             bool loadGlobalResources() noexcept;
 
             /**
-             * charge les ressources requises pour le jeux
+             * charge les ressources requises pour le jeux et initialise les données de fonctions
              * renvoie l'évenement END_OF_LOADING_APP_RESSOURCES
              * met à jour le status de getSuccessfullyLoadRequiredResources()
              * @attention fonction non bloquante
@@ -241,8 +241,9 @@ namespace Game::Resource {
              * ressources requises du jeux
              */
             GameRequiredResource* gameRequiredResources;
-    };
 
+            bool functionsAreLoaded;
+    };
 }
 
 #endif //Z_WAR_RESOURCESMANAGER_HPP

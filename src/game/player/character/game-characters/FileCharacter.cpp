@@ -138,12 +138,6 @@ namespace Game::Player::Character::GameCharacters {
                         if (!formData->imagesMap.contains(key))
                             throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence coup pris au corps");
 
-                // récupération de la vitesse d'attaque
-                    if (!formConfigFileContent["attack-speed"])
-                        throw std::runtime_error("La vitesse d'attaque du personnage manque dans la configuration");
-
-                    formData->attackSpeed = formConfigFileContent["attack-speed"].as<float>();
-
                 // récupération des images de la séquence relever
                     if (!formConfigFileContent["get-up-images"])
                         throw std::runtime_error("La liste des clés d'images décrivant se relever manque dans la configuration");

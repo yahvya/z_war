@@ -51,6 +51,8 @@ add_executable(z_war src/main.cpp
         src/game/player/character/character/CharacterActionDescription.hpp
         src/game/functions/functions/GameFunction.cpp
         src/game/functions/functions/GameFunction.hpp
+        src/game/functions/game-functions/SimpleFunctions.cpp
+        src/game/functions/game-functions/SimpleFunctions.hpp
 )
 
 # ajout de yaml-cpp

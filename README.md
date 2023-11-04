@@ -75,7 +75,7 @@
 > x = 0 équivaux en haut à gauche de l'image - y = 0 représente aussi en haut à gauche de l'image - width = la largeur de l'endroit à utiliser - height = la hauteur à utiliser pour cette section de l'image, [Renseignez vous sur les axes x y en cliquant ici](https://www.splashlearn.com/math-vocabulary/x-and-y-axis#:~:text=The%20x%2Daxis%20is%20a,axis%20is%20called%20the%20ordinate.)\
 > Sur l'image d'exemple pour découper le premier bonhomme on pourrait avoir x = 0 - y = 0 - width = 70 - height = 160, pour le second bonhomme à sa droite x = 75 - y = 0 - width = 70 - height 160 ...  
 
-Dans le fichier de configuration de la forme rajoutez les clés :
+#### Dans le fichier de configuration de la forme rajoutez les clés :
 
 - **images** cette clé défini une map des images de la forme dans le format décrit au dessus
   - ex :

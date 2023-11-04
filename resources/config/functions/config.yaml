@@ -1,0 +1,3 @@
+# fichier de configuration des fonctions (clés : nom de la fonction utilisé dans les autres fichiers, valeur: doit rester inchangé sous peine que la fonction soit ignoré)
+
+IF : "IF"

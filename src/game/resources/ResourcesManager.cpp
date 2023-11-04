@@ -6,6 +6,9 @@
 #include "ResourcesManager.hpp"
 #include "yaml-cpp/yaml.h"
 #include "raylib.h"
+#include "../functions/functions/GameFunction.hpp"
+
+using namespace Game::Functions::Functions;
 
 namespace Game::Resource {
     // initialisation des constantes statiques
@@ -79,16 +82,17 @@ namespace Game::Resource {
     }
 
     bool ResourcesManager::getSuccessfullyLoadRequiredResources() noexcept{
-        return this->gameRequiredResources != nullptr;
+        return this->gameRequiredResources != nullptr && this->functionsAreLoaded;
     }
 
     void ResourcesManager::loadRequiredResources(bool fromThread) noexcept {
         try{
+            if(!GameFunction::config(this) ) throw std::runtime_error("Echec de configuration des fonctions");
+
             // récupération des données du fichier de configuration
                 auto playerConfigFileContent = YAML::LoadFile(
                     this->gameGlobalResources->resourcesDirPath + ResourcesManager::CONFIG_DIR_PATH + "player/config.yaml"
                 );
-
 
             // configuration joueur
                 auto playerConfig = new PlayerConfigDatas();
@@ -121,7 +125,6 @@ namespace Game::Resource {
 
             this->notifyObservers(ResourcesManager::ResourcesManagerObservableEvents::END_OF_LOADING_APP_RESSOURCES, false);
         }
-
     }
 
     GameRequiredResource* ResourcesManager::getGameRequiredResources() noexcept{

@@ -20,3 +20,9 @@ description:
     to-do: [
       "PLAYER_BODY_ACTION(CROUCH)"
     ]
+
+description: [
+  "IF(KEYBOARD_TOUCH_IS_PRESSED(ARROW_DOWN) OR INFERIOR({GAMEPAD_AXIS},0.7) )",
+    "PLAYER_BODY_ACTION(CROUCH)",
+  "ENDIF()"
+]

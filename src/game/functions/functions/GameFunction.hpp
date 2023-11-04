@@ -10,6 +10,9 @@
 #include <map>
 #include <string>
 #include "boost/regex.hpp"
+#include "../../core/Game.hpp"
+
+using namespace Game::Core;
 
 namespace Game::Functions::Functions{
     /**
@@ -17,11 +20,15 @@ namespace Game::Functions::Functions{
      */
     class GameFunction{
         public:
+
             /**
              * type de paramètres
              */
             typedef struct ParamsType{
                 public:
+                    /**
+                     * type de contenu
+                     */
                     typedef enum ParamSpecificType{
                         /**
                          * chaine contenant le nom de variable au format normalisé + d'autres élements si keepVariables vaux true sinon chaine contenant des variables remplacés si elles existaient
@@ -55,6 +62,18 @@ namespace Game::Functions::Functions{
              * type définissant les données d'une fonction
              */
             typedef std::pair<std::string,std::vector<ParamsType> > FunctionData;
+
+            /**
+             * données attendues par la fonction
+             */
+            typedef struct FunctionRequiredGlobalData{
+
+            }FunctionRequiredGlobalData;
+
+            /**
+             * pointeur d'une fonction pour l'exécution de celle ci
+             */
+            typedef std::function<bool(FunctionData,FunctionRequiredGlobalData,std::vector<FunctionData>*)> FunctionMarker;
 
         public:
             /**
@@ -93,6 +112,25 @@ namespace Game::Functions::Functions{
     */
             static std::string replaceVars(std::string str,std::map<std::string,std::string> variablesMap) noexcept;
 
+            /**
+             * exécute les  fonctions fournies
+             * @param functions liste des fonctions
+             * @return si succès d'exécution
+             */
+            static bool execFunctionsList(std::vector<FunctionData> functions) noexcept;
+
+            /**
+             * configure les fonctions de l'application
+             * fonction à appeller avant n'importe quel appel
+             * @param manager gestionnaire de ressources liés
+             * @return si la configuration réussi
+             */
+            static bool config(ResourcesManager* manager) noexcept;
+
+            /**
+             * fonction servant à enregistrer toutes les fonctions
+             */
+            static void registerFunctions();
         public:
             /**
              * regex permettant de matcher les variables
@@ -108,6 +146,19 @@ namespace Game::Functions::Functions{
              * regex permettant de matcher les fonctions
              */
             static const boost::regex functionsMatcher;
+
+            /**
+             * map de nommage des fonctions
+             */
+            static std::map<std::string,std::string> functionsNameMap;
+
+        protected:
+            /**
+             * map des fonctions
+             * @key nom de la fonction
+             * @value pointeur vers une fonction permettant de l'exécuter
+             */
+            static std::map<std::string,FunctionMarker> gameFunctionsMap;
     };
 }
 

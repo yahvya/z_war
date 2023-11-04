@@ -20,7 +20,7 @@ images:
         height: 300
 
 # nom de base du personnage
-name: Nom du personnage
+name:
 
 # énergie requise pour passer dans cette forme
 energy: 0
@@ -40,7 +40,7 @@ shield-images: []
 # liste de clés des images nécessaires pour tomber
 fell-images: []
 
-# liste des images de victoire
+# liste des images de victoire ( les listes ici je les ai pas défini en haut c''est pour le test)
 victory-images: [
   ["victoire_image"],
   ["victoire_image_bleue_1","victoire_image_blue_2"],
