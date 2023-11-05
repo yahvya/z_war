@@ -1,0 +1,12 @@
+controllers : ["classic-keyboard","classic-psr3-gamepad"]
+
+forms:
+  - name : "Cell"
+    path : "/forms/cell/config.yaml"
+
+presentation-image-path: "/config/Poster.png"
+
+presentation-animation:
+  form : "Cell"
+
+  animation: []

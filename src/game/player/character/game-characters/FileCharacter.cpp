@@ -84,8 +84,7 @@ namespace Game::Player::Character::GameCharacters {
 
                 // récupération des images de la séquence bouclier
                     if (!formConfigFileContent["shield-images"])
-                        throw std::runtime_error(
-                                "La liste des clés d'images décrivant le bouclier mis manque dans la configuration");
+                        throw std::runtime_error("La liste des clés d'images décrivant le bouclier mis manque dans la configuration");
 
                     formData->shieldImagesList = formConfigFileContent["shield-images"].as<std::vector<std::string> >();
 
@@ -107,15 +106,10 @@ namespace Game::Player::Character::GameCharacters {
                     if (!formConfigFileContent["victory-images"])
                         throw std::runtime_error("La liste des clés d'images de victoire manquent dans la configuration");
 
-                    formData->victoryImagesList = formConfigFileContent["victory-images"].as<std::vector<std::vector<std::string> > >();
+                    formData->victoryImagesList = formConfigFileContent["victory-images"].as<std::vector<std::string > >();
 
-                    for (auto &imagesList: formData->victoryImagesList) {
-                        if (imagesList.empty()) throw std::runtime_error("La liste des images de victoire est vide");
-
-                        for (auto &key: imagesList)
-                            if (!formData->imagesMap.contains(key))
-                                throw std::runtime_error(
-                                        "Une des clés d'images fournis n'existe pas dans la séquence images de victoire");
+                    for (auto &key: formData->victoryImagesList) {
+                        if (!formData->imagesMap.contains(key) ) throw std::runtime_error("Une des clés d'images fournis n'existe pas dans la séquence images de victoire");
                     }
 
                 // récupération des images de coup pris à la tête
@@ -164,7 +158,7 @@ namespace Game::Player::Character::GameCharacters {
                         if (!this->manageActionVars(action)) throw std::runtime_error("Echec de la gestion de l'action");
 
                         formData->actionsMap[action->actionName] = action;
-                }
+                    }
 
             this->characterDatas->characterFormsMap[formName] = formData;
 
@@ -182,7 +176,7 @@ namespace Game::Player::Character::GameCharacters {
         TraceLog(LOG_INFO,"Gestion des données d'une action");
 
         try{
-
+            std::cout << "bonjour comment allee vous " << std::endl;
 
             return true;
         }
@@ -203,7 +197,6 @@ namespace Game::Player::Character::GameCharacters {
             // chargement des données requises à l'animation du personnage
                 std::vector<std::string> keysToLoad{
                     "presentation-animation.form",
-                    "presentation-animation.required-actions",
                     "presentation-animation.animation"
                 };
 

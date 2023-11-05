@@ -17,8 +17,5 @@ presentation-animation:
   # nom de la forme de l'animation
   form: "Forme de base"
 
-  # liste des actions au chargement requis pour l'animation
-  required-actions: ["static-jump","roulade-left","roulade-right"]
-
   # action à éxécuter pour l'animation dans l'ordre
   animation: ["static-jump","static-jump","roulade-right","roulade-left","jump-to-right"]

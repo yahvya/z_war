@@ -1,0 +1,235 @@
+images:
+  crouch-uppercut:
+    path: "/forms/cell/sprites/CrouchUppercut.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  direct-punch:
+    path: "/forms/cell/sprites/DirectHit.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  kick:
+    path: "/forms/cell/sprites/KickHead.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  aura-charge:
+    path: "/forms/cell/sprites/AuraCharge.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+
+  win-1:
+    path: "/forms/cell/sprites/Win1.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+
+  get-up:
+    path: "/forms/cell/sprites/GettingUp.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+
+  body-hit:
+    path: "/forms/cell/sprites/GetHitStomatch.ong"
+    content-config:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+
+  head-hit:
+    path: "/forms/cell/sprites/GetHitFace.ong"
+    content-config:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+
+  guard-stand:
+    path: "/forms/cell/sprites/GuardStand.ong"
+    content-config:
+      - x: 0
+        y: 0
+        width: 200
+        height: 300
+
+  head-but:
+    path: "/forms/cell/sprites/HeadBut.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 300
+
+  crouch:
+    path: "/forms/cell/sprites/Crouch.png"
+    content-config:
+     - x: 0
+       y: 0
+       width: 300
+       height: 300
+
+  ko:
+    path: "/forms/cell/sprites/FaillingDown.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 300
+
+  shield:
+    path: "/forms/cell/sprites/GuardStand.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 300
+
+  dash-back:
+    path: "/forms/cell/sprites/DashBack.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 300
+
+  dash:
+    path: "/forms/cell/sprites/Dash.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 300
+
+  flying:
+    path: "/forms/cell/sprites/Flying.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  jump-punch:
+    path: "/forms/cell/sprites/JumpAttack.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  ki-blast-head:
+    path: "/forms/cell/sprites/KiBlastHead.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  ki-blast-front:
+    path: "/forms/cell/sprites/KiBlastFront.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  ki-blast-bottom:
+    path: "/forms/cell/sprites/KiBlastBottom.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  kick-head:
+    path: "/forms/cell/sprites/KickHead.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  low-kick-bottom:
+    path: "/forms/cell/sprites/LowKickBottom.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  stand:
+    path: "/forms/cell/sprites/Standing.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  knee-strike:
+    path: "/forms/cell/sprites/KneeStrike.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+  push-back:
+    path: "/forms/cell/sprites/PushBack.png"
+    content-config:
+      - x: 0
+        y: 0
+        width: 300
+        height: 200
+
+    walk:
+      path: "/forms/cell/sprites/Walking.png"
+      content-config:
+        - x:
+          y:
+          width: 300
+          height: 200
+
+name: "Cell base"
+
+energy: 0
+
+duration: "{INFINITE}"
+
+combo-gain-formula: "{COUNT_OF_HITS} * {ATTACK_SPEED}"
+
+shield-points: 300
+
+shield-images: ["shield"]
+
+fell-images: ["ko"]
+
+victory-images: [
+  ["win-1"]
+]
+
+head-hit-images: ["head-hit"]
+
+body-hit-images: ["body-hit"]
+
+get-up-images: ["get-up"]
+
+actions-map:
+  charge: "/forms/cell/actions/charge.yaml"

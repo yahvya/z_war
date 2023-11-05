@@ -132,11 +132,6 @@ namespace Game::Player::Character::Character{
         std::string formName;
 
         /**
-         * nom des actions requises pour l'animation
-         */
-        std::vector<std::string> requiredActions;
-
-        /**
          * liste des noms d'actions à lancer dans l'ordre de lancement pour l'animation
          */
         std::vector<std::string> animationList;
@@ -309,7 +304,10 @@ namespace Game::Player::Character::Character{
             }
 
         // images possibles de victoires
-            std::vector<std::vector<std::string> > victoryImagesList;
+            /**
+             * liste des noms d'images de victoire
+             */
+            std::vector<std::string> victoryImagesList;
 
             /**
              *

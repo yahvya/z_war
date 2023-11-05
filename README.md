@@ -54,15 +54,11 @@
         # nom de la forme de l'animation
         form: "Forme de base"
 
-        # liste des actions au chargement requis pour l'animation
-        required-actions: ["static-jump","roulade-left","roulade-right"]
-
         # action à éxécuter pour l'animation dans l'ordre
         animation: ["static-jump","static-jump","roulade-right","roulade-left","jump-to-right"]
       ```
       > Le principe des actions sera défini plus bas (*une action représente une action ex: sauter aller,à gauche,...*)
       - La clé **form** défini le nom de forme qui sera utilisé pour l'animation
-      - La clé **required-actions** défini le nom des actions qui seront utilisé pour définir l'animation
       - La clé **animation** défini une liste de noms d'actions (**les actions doivent avoir été définis dans required-actions**) à éxécuter à la suite pour faire l'animation du personnage
 #### Configuration d'une forme du personnage
 
@@ -83,7 +79,7 @@
     images:
       position-debout:
         path: "/chemin/image-debout.png"
-        contentConfig:
+        content-config:
           - x: 0
             y: 0
             width: 200
@@ -94,14 +90,14 @@
             height: 100
       marche:
         path: "/chemin/image-marche.png"
-        contentConfig:
+        content-config:
           - x: 0
             y: 0
             width: 200
             height: 300
     ```
   >La map a comme clé un nom arbitraire unique (il est conseillé de choisir un nom qui décrit le contenu de l'image sans espace)\
-  >La valeur est une map contenant les clés **path** qui est le chemin vers l'image *les chemins suivent toujours la même logique* et *contentConfig* qui répresente liste de découpage comme expliqué au dessus l'ordre de découpage est important, ce découpage constitura la suite sera joué
+  >La valeur est une map contenant les clés **path** qui est le chemin vers l'image *les chemins suivent toujours la même logique* et *content-config* qui répresente liste de découpage comme expliqué au dessus l'ordre de découpage est important, ce découpage constitura la suite sera joué
 - **name** cette clé défini le nom de la forme du personnage
   - ex: name: "Super sayan"
 - **energy** cette clé défini l'énergie requise pour lancer cette forme du personnage (*une énergie à 0 définiera la forme de base du personnage*)
@@ -113,7 +109,7 @@
   - ex: combo-gain-formula: "{COUNT_OF_HITS} * {ATTACK_SPEED}"
 - **shield-points** cette clé défini les points de base du bouclier du personnage (*quand il se protège*)
   - ex: shield-points: 300
-- **shield-images** cette clé défini le/les noms d'images configurés plus haut sur la forme à utiliser pour faire la séquence bouclier
+- **shield-images** cette clé défini le/les noms d'images configurés plus haut sur la forme à utiliser pour faire la séquence bouclier (cette séquence est utilisé si l'utilisateur ne fait aucune action quand on l'attaque  et que les points de bouclier associé à cette séquence sont actifs)
   ex: shield-images : ["image_bouclier"] ou shield-images : ["image_seul_bouclier_1","image_seul_bouclier_2"]
 - **fell-images** cette clé défini le/les noms d'images configurés plus haut dans la forme à utiliser pour faire la séquence de chute
   - ex: même principes shield-images
@@ -121,9 +117,8 @@
   - ex: 
   ````
   victory-images: [
-    ["victoire_image"],
-    ["victoire_image_bleue_1","victoire_image_blue_2"],
-    ["victoire_image_rouge"]
+    ["position"],
+    ["position","marche"]
   ]
   ````
 
@@ -134,10 +129,11 @@
 - **get-up-images** cette clé défini le/les noms d'images configurés plus haut dans la forme à utiliser pour faire la séquence de se relever
   - ex: même principes shield-images
   
-- **actions-map** cette clé mappe les actions du personnage 
+- **actions-map** cette clé mappe les actions du personnage, la clé defaut doit être présente , elle représente l'action par défaut à faire du personne en début de partie
   - ex:
   ````
   actions-map:
+    default: "/config/forms/base-form/actions/default.yaml"
     crouch : "/config/forms/base-form/actions/crouch.yaml"
     go-left: "/config/forms/base-form/actions/go-left.yaml"
     go-right: "/config/forms/base-form/actions/go-right.yaml"
@@ -148,4 +144,5 @@
     static-jump: "/config/forms/base-form/actions/static-jump.yaml"
   ````
   La clé est le nom donné à l'action et la valeur le chemin vers un fichier **'.yaml'** servant à définir l'action
+> Ceci n'est qu'un exemple de structure, hormis les quelques points notés obligatoires la structure est libre , vous pouvez vous inspirer des personnages déjà existants.
 #### Configuration d'une action d'un personnage
