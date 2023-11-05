@@ -3,211 +3,521 @@ images:
     path: "/forms/cell/sprites/CrouchUppercut.png"
     content-config:
       - x: 0
+        y: 12
+        width: 85
+        height: 88
+
+      - x: 91
+        y: 11
+        width: 81
+        height: 90
+
+      - x: 176
         y: 0
-        width: 300
-        height: 200
+        width: 76
+        height: 102
 
   direct-punch:
-    path: "/forms/cell/sprites/DirectHit.png"
+    path: "/forms/cell/sprites/DirectPunch.png"
     content-config:
       - x: 0
-        y: 0
-        width: 300
-        height: 200
+        y: 6
+        width: 103
+        height: 107
+
+      - x: 108
+        y: 5
+        width: 100
+        height: 108
+
+      - x: 210
+        y: 6
+        width: 129
+        height: 107
 
   kick:
     path: "/forms/cell/sprites/KickHead.png"
     content-config:
-      - x: 0
+      - x: 2
+        y: 8
+        width: 69
+        height: 115
+
+      - x: 84
+        y: 2
+        width: 87
+        height: 120
+
+      - x: 181
         y: 0
-        width: 300
-        height: 200
+        width: 72
+        height: 124
+
+      - x: 264
+        y: 0
+        width: 114
+        height: 122
+
+      - x: 383
+        y: 8
+        width: 64
+        height: 114
 
   aura-charge:
     path: "/forms/cell/sprites/AuraCharge.png"
     content-config:
-      - x: 0
+      - x: 4
+        y: 7
+        width: 74
+        height: 124
+
+      - x: 84
+        y: 3
+        width: 66
+        height: 127
+
+      - x: 160
         y: 0
-        width: 200
-        height: 300
+        width: 64
+        height: 131
 
   win-1:
     path: "/forms/cell/sprites/Win1.png"
     content-config:
       - x: 0
-        y: 0
-        width: 200
-        height: 300
+        y: 10
+        width: 62
+        height: 122
+
+      - x: 78
+        y: 1
+        width: 52
+        height: 128
 
   get-up:
     path: "/forms/cell/sprites/GettingUp.png"
     content-config:
-      - x: 0
+      - x: 2
+        y: 37
+        width: 82
+        height: 66
+
+      - x: 86
+        y: 21
+        width: 84
+        height: 83
+
+      - x: 180
         y: 0
-        width: 200
-        height: 300
+        width: 80
+        height: 104
 
   body-hit:
     path: "/forms/cell/sprites/GetHitStomatch.ong"
     content-config:
-      - x: 0
-        y: 0
-        width: 200
-        height: 300
+      - x: 3
+        y: 1
+        width: 92
+        height: 108
+
+      - x: 99
+        y: 8
+        width: 107
+        height: 100
 
   head-hit:
     path: "/forms/cell/sprites/GetHitFace.ong"
     content-config:
-      - x: 0
-        y: 0
-        width: 200
-        height: 300
+      - x: 2
+        y: 9
+        width: 85
+        height: 111
+
+      - x: 92
+        y: 2
+        width: 93
+        height: 119
 
   guard-stand:
     path: "/forms/cell/sprites/GuardStand.ong"
     content-config:
-      - x: 0
-        y: 0
-        width: 200
-        height: 300
+      - x: 2
+        y: 9
+        width: 79
+        height: 113
+
+      - x: 84
+        y: 6
+        width: 68
+        height: 115
 
   head-but:
     path: "/forms/cell/sprites/HeadBut.png"
     content-config:
       - x: 0
+        y: 8
+        width: 92
+        height: 100
+
+      - x: 93
+        y: 14
+        width: 119
+        height: 83
+
+      - x: 220
+        y: 27
+        width: 129
+        height: 39
+
+      - x: 356
+        y: 5
+        width: 94
+        height: 103
+
+      - x: 459
         y: 0
-        width: 300
-        height: 300
+        width: 77
+        height: 108
 
   crouch:
     path: "/forms/cell/sprites/Crouch.png"
     content-config:
-     - x: 0
-       y: 0
-       width: 300
-       height: 300
+      - x: 2
+        y: 2
+        width: 78
+        height: 94
+
+      - x: 84
+        y: 8
+        width: 77
+        height: 88
 
   ko:
     path: "/forms/cell/sprites/FaillingDown.png"
     content-config:
       - x: 0
+        y: 31
+        width: 132
+        height: 76
+
+      - x: 137
+        y: 38
+        width: 128
+        height: 67
+
+      - x: 276
+        y: 12
+        width: 121
+        height: 95
+
+      - x: 408
+        y: 44
+        width: 126
+        height: 60
+
+      - x: 543
+        y: 18
+        width: 113
+        height: 87
+
+      - x: 662
         y: 0
-        width: 300
-        height: 300
+        width: 112
+        height: 108
+
+      - x: 780
+        y: 72
+        width: 129
+        height: 34
 
   shield:
     path: "/forms/cell/sprites/GuardStand.png"
     content-config:
-      - x: 0
-        y: 0
-        width: 300
-        height: 300
+      - x: 2
+        y: 8
+        width: 80
+        height: 113
+
+      - x: 85
+        y: 4
+        width: 65
+        height: 119
 
   dash-back:
     path: "/forms/cell/sprites/DashBack.png"
     content-config:
       - x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 72
+        height: 125
+
+      - x: 170
+        y: 1
+        width: 81
+        height: 124
+
+      - x: 170
+        y: 1
+        width: 84
+        height: 124
+
+      - x: 256
+        y: 10
+        width: 99
+        height: 114
+
+      - x: 362
+        y: 31
+        width: 125
+        height: 95
 
   dash:
     path: "/forms/cell/sprites/Dash.png"
     content-config:
-      - x: 0
-        y: 0
-        width: 300
-        height: 300
+      - x: 2
+        y: 1
+        width: 78
+        height: 117
+
+      - x: 90
+        y: 10
+        width: 98
+        height: 110
+
+      - x: 192
+        y: 25
+        width: 128
+        height: 94
 
   flying:
     path: "/forms/cell/sprites/Flying.png"
     content-config:
-      - x: 0
-        y: 0
-        width: 300
-        height: 200
+      - x: 1
+        y: 1
+        width: 76
+        height: 128
+
+      - x: 80
+        y: 1
+        width: 76
+        height: 128
 
   jump-punch:
     path: "/forms/cell/sprites/JumpAttack.png"
     content-config:
-      - x: 0
-        y: 0
-        width: 300
-        height: 200
+      - x: 2
+        y: 3
+        width: 97
+        height: 100
+
+      - x: 104
+        y: 4
+        width: 100
+        height: 101
+
+      - x: 207
+        y: 8
+        width: 115
+        height: 97
 
   ki-blast-head:
     path: "/forms/cell/sprites/KiBlastHead.png"
     content-config:
-      - x: 0
+      - x: 2
         y: 0
-        width: 300
-        height: 200
+        width: 92
+        height: 105
+
+      - x: 102
+        y: 0
+        width: 88
+        height: 107
+
+      - x: 193
+        y: 0
+        width: 112
+        height: 105
+
+      - x: 308
+        y: 0
+        width: 108
+        height: 107
 
   ki-blast-front:
     path: "/forms/cell/sprites/KiBlastFront.png"
     content-config:
-      - x: 0
+      - x: 1
         y: 0
-        width: 300
-        height: 200
+        width: 88
+        height: 106
+
+      - x: 92
+        y: 1
+        width: 112
+        height: 104
+
+      - x: 210
+        y: 2
+        width: 108
+        height: 102
 
   ki-blast-bottom:
     path: "/forms/cell/sprites/KiBlastBottom.png"
     content-config:
-      - x: 0
-        y: 0
-        width: 300
-        height: 200
+      - x: 1
+        y: 13
+        width: 87
+        height: 104
+
+      - x: 92
+        y: 11
+        width: 116
+        height: 105
+
+      - x: 208
+        y: 10
+        width: 102
+        height: 102
 
   kick-head:
     path: "/forms/cell/sprites/KickHead.png"
     content-config:
       - x: 0
+        y: 9
+        width: 71
+        height: 113
+
+      - x: 83
         y: 0
-        width: 300
-        height: 200
+        width: 89
+        height: 122
+
+      - x: 178
+        y: 1
+        width: 76
+        height: 122
+
+      - x: 263
+        y: 0
+        width: 116
+        height: 123
+
+      - x: 383
+        y: 8
+        width: 64
+        height: 116
 
   low-kick-bottom:
     path: "/forms/cell/sprites/LowKickBottom.png"
     content-config:
-      - x: 0
+      - x: -1
+        y: 22
+        width: 80
+        height: 81
+
+      - x: 88
+        y: 8
+        width: 83
+        height: 96
+
+      - x: 178
         y: 0
-        width: 300
-        height: 200
+        width: 96
+        height: 104
 
   stand:
     path: "/forms/cell/sprites/Standing.png"
     content-config:
       - x: 0
-        y: 0
-        width: 300
-        height: 200
+        y: 3
+        width: 81
+        height: 108
+
+      - x: 85
+        y: 4
+        width: 80
+        height: 106
+
+      - x: 169
+        y: 6
+        width: 78
+        height: 106
 
   knee-strike:
     path: "/forms/cell/sprites/KneeStrike.png"
     content-config:
-      - x: 0
+      - x: 1
+        y: 14
+        width: 71
+        height: 101
+
+      - x: 76
+        y: 21
+        width: 89
+        height: 92
+
+      - x: 169
+        y: 1
+        width: 85
+        height: 112
+
+      - x: 268
         y: 0
-        width: 300
-        height: 200
+        width: 82
+        height: 115
+
+      - x: 365
+        y: 0
+        width: 88
+        height: 114
+
+      - x: 460
+        y: 3
+        width: 83
+        height: 108
 
   push-back:
     path: "/forms/cell/sprites/PushBack.png"
     content-config:
       - x: 0
         y: 0
-        width: 300
-        height: 200
+        width: 88
+        height: 108
 
-    walk:
-      path: "/forms/cell/sprites/Walking.png"
-      content-config:
-        - x:
-          y:
-          width: 300
-          height: 200
+      - x: 97
+        y: 0
+        width: 87
+        height: 106
 
-name: "Cell base"
+      - x: 192
+        y: 4
+        width: 104
+        height: 103
+
+      - x: 302
+        y: 3
+        width: 99
+        height: 104
+
+  walk:
+    path: "/forms/cell/sprites/Walking.png"
+    content-config:
+      - x: 0
+        y: 8
+        width: 75
+        height: 104
+
+      - x: 83
+        y: 2
+        width: 79
+        height: 109
+
+      - x: 165
+        y: 4
+        width: 79
+        height: 108
+
+name: "Cell forme de base"
 
 energy: 0
 
@@ -232,4 +542,21 @@ body-hit-images: ["body-hit"]
 get-up-images: ["get-up"]
 
 actions-map:
-  charge: "/forms/cell/actions/charge.yaml"
+  default: "/forms/cell/actions/default.yaml"
+  crouch-uppercut: "/forms/cell/actions/crouch-uppercut.yaml"
+  direct-punch: "/forms/cell/actions/direct-punch.yaml"
+  kick: "/forms/cell/actions/kick.yaml"
+  aura-charge: "/forms/cell/actions/charge.yaml"
+  get-up: "/forms/cell/actions/get-up.yaml"
+  head-but: "/forms/cell/actions/head-but.yaml"
+  walk: "/forms/cell/actions/walk.yaml"
+  crouch: "/forms/cell/actions/crouch.yaml"
+  bash-back: "/forms/cell/actions/bash-back.yaml"
+  dash: "/forms/cell/actions/dash.yaml"
+  fly: "/forms/cell/actions/fly.yaml"
+  jump-punch: "/forms/cell/actions/jump-punch.yaml"
+  kick-blast: "/forms/cell/actions/kick-blast.yaml"
+  low-kick: "/forms/cell/actions/low-kick.yaml"
+  knee-strike: "/forms/cell/actions/knee-strike.yaml"
+  push-back: "/forms/cell/actions/push-back.yaml"
+
