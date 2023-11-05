@@ -89,6 +89,8 @@ namespace Game::Resource {
         try{
             if(!GameFunction::config(this) ) throw std::runtime_error("Echec de configuration des fonctions");
 
+            this->functionsAreLoaded = true;
+
             // récupération des données du fichier de configuration
                 auto playerConfigFileContent = YAML::LoadFile(
                     this->gameGlobalResources->resourcesDirPath + ResourcesManager::CONFIG_DIR_PATH + "player/config.yaml"

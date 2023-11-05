@@ -5,6 +5,7 @@
 #ifndef Z_WAR_CLASSICOBSERVER_HPP
 #define Z_WAR_CLASSICOBSERVER_HPP
 
+
 namespace Game::Pattern::Observer {
     /**
      * marqueur observer

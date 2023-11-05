@@ -8,6 +8,7 @@
 
 using namespace Game::Utils;
 
+#include <iostream>
 namespace Game::Functions::Functions {
     // définition des constantes
     const boost::regex GameFunction::varsMatcher = boost::regex("\\{([^\\{\\}]+)\\}");
@@ -134,7 +135,41 @@ namespace Game::Functions::Functions {
         return toParse;
     }
 
-    bool GameFunction::execFunctionsList(std::vector<GameFunction::FunctionData> functions) noexcept{
+    GameFunction::GameFunctionReturnType GameFunction::execFunction(FunctionData toExec,FunctionRequiredGlobalData* globalDatas,std::vector<FunctionData>* nextFunctions){
+        auto [functionName,params] = toExec;
+
+        // recherche du nom réel de la fonction
+        std::string functionRealName;
+
+        for(auto [userFunctionName,realName] : GameFunction::functionsNameMap){
+            if(functionName == userFunctionName){
+                functionRealName = realName;
+                break;
+            }
+        }
+
+        if(functionRealName.empty() || !GameFunction::gameFunctionsMap.contains(functionRealName) ) throw std::runtime_error("Fonction non trouvé");
+
+        return  GameFunction::gameFunctionsMap.find(functionRealName)->second(toExec,globalDatas,nextFunctions);
+    }
+
+    bool GameFunction::execFunctionsList(std::vector<FunctionData> functions,FunctionRequiredGlobalData* globalDatas) noexcept{
+        // exécution des fonctions si une exception est envoyé alors échec de la fonction
+        while(!functions.empty() ){
+            try{
+                FunctionData toExec = functions.begin()[0];
+
+                functions.erase(functions.begin() );
+
+                GameFunction::execFunction(toExec,globalDatas,&functions);
+            }
+            catch(std::exception& e){
+                TraceLog(LOG_ERROR,"Echec d'exécution de fonction");
+                TraceLog(LOG_ERROR,e.what() );
+
+                return false;
+            }
+        }
 
         return true;
     }
@@ -159,6 +194,14 @@ namespace Game::Functions::Functions {
     }
 
     void GameFunction::registerFunctions(){
+        /**
+         * @attention pour chaque fonction ajoutée , vérifier qu'elle n'existe pas dans la liste et ajouter son nom dans liste doc
+         * @attention pour chaque fonction ajoutée, vérifier que son type de retour existe dans GameFunctionReturnType
+         * listes des fonctions\n
+         * @attention une fonction qui renvoi une exception est considéré comme ayant échoué
+         */
+
+        // contient les fonctions []
         GameFunctions::SimpleFunctions::registerFunctions();
     }
 }

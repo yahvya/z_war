@@ -10,9 +10,9 @@
 #include <map>
 #include <string>
 #include "boost/regex.hpp"
-#include "../../core/Game.hpp"
+#include "../../resources/ResourcesManager.hpp"
 
-using namespace Game::Core;
+using namespace Game::Resource;
 
 namespace Game::Functions::Functions{
     /**
@@ -71,9 +71,17 @@ namespace Game::Functions::Functions{
             }FunctionRequiredGlobalData;
 
             /**
-             * pointeur d'une fonction pour l'exécution de celle ci
+             * types de retour possibles des fonctions de jeux
              */
-            typedef std::function<bool(FunctionData,FunctionRequiredGlobalData,std::vector<FunctionData>*)> FunctionMarker;
+            typedef std::variant<
+                bool,
+                std::string
+            > GameFunctionReturnType;
+
+            /**
+            * pointeur d'une fonction pour l'exécution de celle ci
+            */
+            typedef std::function<GameFunctionReturnType(FunctionData,FunctionRequiredGlobalData*,std::vector<FunctionData>*)> FunctionMarker;
 
         public:
             /**
@@ -113,11 +121,21 @@ namespace Game::Functions::Functions{
             static std::string replaceVars(std::string str,std::map<std::string,std::string> variablesMap) noexcept;
 
             /**
+             * exécute une fonction
+             * @param toExec la fonction à exécuter
+             * @param globalDatas données globales (peuvent être mise à jour)
+             * @param nextFunctions fonctions suivantes
+             * @return le résultat de la fonction
+             */
+            static GameFunctionReturnType execFunction(FunctionData toExec,FunctionRequiredGlobalData* globalDatas,std::vector<FunctionData>* nextFunctions);
+
+            /**
              * exécute les  fonctions fournies
              * @param functions liste des fonctions
-             * @return si succès d'exécution
+             * @param globalDatas données globales (peuvent être mise à jour)
+             * @return si les fonctions ont bien été exécuté
              */
-            static bool execFunctionsList(std::vector<FunctionData> functions) noexcept;
+            static bool execFunctionsList(std::vector<FunctionData> functions,FunctionRequiredGlobalData* globalDatas) noexcept;
 
             /**
              * configure les fonctions de l'application

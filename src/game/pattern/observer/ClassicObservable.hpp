@@ -8,7 +8,8 @@
 #include <map>
 #include <list>
 #include <functional>
-#include <any>
+#include <variant>
+#include <string>
 #include "ClassicObserver.hpp"
 
 namespace Game::Pattern::Observer {
@@ -19,9 +20,20 @@ namespace Game::Pattern::Observer {
         // structures
         public:
             /**
+             * types de données possibles des évenements à enregistrer ici
+             */
+            typedef std::variant<
+                    bool,
+                    int,
+                    double,
+                    float,
+                    std::string
+            > EventDataType;
+
+            /**
              * lambda de gestion des notificqtions
              */
-            typedef std::function<void(ClassicObservable*,std::any)> ObserverNotificationExecutor;
+            typedef std::function<void(ClassicObservable*,EventDataType)> ObserverNotificationExecutor;
 
             /**
              * structures conteneur des données de notification
@@ -69,13 +81,14 @@ namespace Game::Pattern::Observer {
             ) noexcept;
 
         protected:
-            /*
+            /**
              * notifie les observateurs
+             * @attention le type de données doit être enregistré
              * @param methodId id de la méthode qui notifie
              * @param datas les données à partager
              * @return self
              */
-            ClassicObservable* notifyObservers(int methodId,std::any datas) noexcept;
+            ClassicObservable* notifyObservers(int methodId,EventDataType datas) noexcept;
 
         private:
             /**

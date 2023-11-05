@@ -38,7 +38,7 @@ namespace Game::Core {
             ResourcesManager::ResourcesManagerObservableEvents::END_OF_LOADING_APP_RESSOURCES,
             new ClassicObservable::ObserverDatasContainer(
                 this,
-                [this,&loadingScene](ClassicObservable* resourceManager,std::any eventData){ loadingScene->stopDrawing(); }
+                [this,&loadingScene](ClassicObservable* resourceManager,ClassicObservable::EventDataType eventData){ loadingScene->stopDrawing(); }
             )
         );
 

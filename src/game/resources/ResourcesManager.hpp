@@ -242,7 +242,7 @@ namespace Game::Resource {
              */
             GameRequiredResource* gameRequiredResources;
 
-            bool functionsAreLoaded;
+            bool functionsAreLoaded = false;
     };
 }
 

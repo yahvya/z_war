@@ -27,7 +27,7 @@ namespace Game::Pattern::Observer {
         return this;
     }
 
-    ClassicObservable* ClassicObservable::notifyObservers(int methodId,std::any datas) noexcept{
+    ClassicObservable* ClassicObservable::notifyObservers(int methodId,EventDataType datas) noexcept{
         try {
             // vérification d'existante de l'évenement
             if (!this->observersMap.contains(methodId) ) return this;

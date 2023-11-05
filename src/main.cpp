@@ -2,6 +2,8 @@
 #include "game/core/Game.hpp"
 
 int main() {
+
+
     try {
         // lancement du jeux
         auto game = new Game::Core::Game();
