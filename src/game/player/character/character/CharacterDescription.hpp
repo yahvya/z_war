@@ -60,6 +60,110 @@ namespace Game::Player::Character::Character{
      */
     const std::map<std::string,std::string> KEYBOARD_TOUCH_MAP_VAR = {
         /**
+         * touche clavier a
+         */
+        {"A",std::to_string(KeyboardKey::KEY_A) },
+        /**
+         * touche clavier z
+         */
+        {"Z",std::to_string(KeyboardKey::KEY_Z)},
+        /**
+         * touche clavier e
+         */
+        {"E",std::to_string(KeyboardKey::KEY_E)},
+        /**
+         * touche clavier r
+         */
+        {"R",std::to_string(KeyboardKey::KEY_R)},
+        /**
+         * touche clavier t
+         */
+        {"T",std::to_string(KeyboardKey::KEY_T)},
+        /**
+         * touche clavier y
+         */
+        {"Y",std::to_string(KeyboardKey::KEY_Y)},
+        /**
+         * touche clavier u
+         */
+        {"U",std::to_string(KeyboardKey ::KEY_U)},
+        /**
+         * touche clavier i
+         */
+        {"I",std::to_string(KeyboardKey::KEY_I)},
+        /**
+         * touche clavier o
+         */
+        {"O",std::to_string(KeyboardKey::KEY_O)},
+        /**
+         * touche clavier p
+         */
+        {"P",std::to_string(KeyboardKey::KEY_P)},
+        /**
+         * touche clavier q
+         */
+        {"Q",std::to_string(KeyboardKey::KEY_Q)},
+        /**
+         * touche clavier s
+         */
+        {"S",std::to_string(KeyboardKey::KEY_S)},
+        /**
+         * touche clavier d
+         */
+        {"D",std::to_string(KeyboardKey::KEY_D)},
+        /**
+         * touche clavier f
+         */
+        {"F",std::to_string(KeyboardKey::KEY_F)},
+        /**
+         * touche clavier g
+         */
+        {"G",std::to_string(KeyboardKey::KEY_G)},
+        /**
+         * touche clavier h
+         */
+        {"H",std::to_string(KeyboardKey::KEY_H)},
+        /**
+         * touche clavier j
+         */
+        {"J",std::to_string(KeyboardKey::KEY_J)},
+        /**
+         * touche clavier k
+         */
+        {"K",std::to_string(KeyboardKey::KEY_K)},
+        /**
+         * touche clavier l
+         */
+        {"L",std::to_string(KeyboardKey::KEY_L)},
+        /**
+         * touche clavier m
+         */
+        {"M",std::to_string(KeyboardKey::KEY_M)},
+        /**
+         * touche clavier w
+         */
+        {"W",std::to_string(KeyboardKey::KEY_W)},
+        /**
+         * touche clavier x
+         */
+        {"X",std::to_string(KeyboardKey::KEY_X)},
+        /**
+         * touche clavier c
+         */
+        {"C",std::to_string(KeyboardKey::KEY_C)},
+        /**
+         * touche clavier v
+         */
+        {"V",std::to_string(KeyboardKey::KEY_V)},
+        /**
+         * touche clavier b
+         */
+        {"B",std::to_string(KeyboardKey::KEY_B)},
+        /**
+         * touche clavier n
+         */
+        {"N",std::to_string(KeyboardKey::KEY_N)},
+        /**
          * flèche basse clavier
          */
         {"ARROW-DOWN",std::to_string(KeyboardKey::KEY_DOWN)},
